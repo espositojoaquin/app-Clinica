@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "app-clinicaonline": {
+      "hosting": {
+        "app-Clinica": [
+          "app-clinicaonline"
+        ]
+      }
+    }
+  }
+}

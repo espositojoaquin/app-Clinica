@@ -1,0 +1,65 @@
+<mat-toolbar style="background-color: #c2185b; color: white;" class="expanded-toolbar">
+    <img style="height: 3rem; width: 3rem; border-radius: 100%; margin-right: 2rem;" src="../../../assets/fondo.png" alt="">
+      Solicitar Turno
+      <div class="atras">
+        <a style="color: aliceblue;" class="nav-link" href="javascript: history.go(-1)" tabindex="-1" aria-disabled="true" title="Atrás"
+        >
+        <i class="fa fa-sign-out"></i>
+       </a>
+      </div>
+  </mat-toolbar>
+
+  <div class="contenedor" >
+    <mat-card class="container" >
+      <div class="imgcontainer">
+        <img src="../../../assets/login.png" alt="Avatar" class="avatar" max-width="104" >
+      </div>
+      <div mat-card-avatar class="example-header-image"></div>
+      <form class="example-form">
+        <mat-form-field style="width: 25%;" class="full-width-input">
+              <mat-label style="color: #c2185b;">Seleccione una Especialidad</mat-label>
+          <mat-select [(ngModel)]="turno.especialidad" name="tipo"> 
+              
+            <mat-option *ngFor="let item of especialidades"  [value]="item.name">{{item.name}}</mat-option>
+            
+            <!-- <mat-option value="profesional"> Profesional</mat-option>
+            <mat-option value="paciente"> Paciente </mat-option> -->
+            
+          </mat-select>
+       </mat-form-field>
+       <br>
+        <mat-form-field style="width: 40%; margin-right: 10%;" >
+            <mat-label  style="color: #c2185b;" >Nombre</mat-label>
+            <input  style="color: black;" matInput type="email" [(ngModel)]="usuario.nombre" name="nombre">
+          </mat-form-field>
+          <mat-form-field style="width: 40%;" >
+            <mat-label  style="color: #c2185b; margin-right: 0rem;" >Apellido</mat-label>
+            <input  style="color: black;" matInput type="email" [(ngModel)]="usuario.apellido" name="apellido">
+          </mat-form-field>
+          <mat-form-field style="width: 40%; margin-right: 10%;">
+            <mat-label  style="color: #c2185b;" >Dni</mat-label>
+            <input  style="color: black;" matInput type="number" [(ngModel)]="usuario.dni" name="dni">
+          </mat-form-field>
+        <mat-form-field style="width: 40%;" >
+          <mat-label  style="color: #c2185b;" >Email</mat-label>
+          <input  style="color: black;" matInput type="email" [(ngModel)]="usuario.email" name="email">
+        </mat-form-field>
+       
+        <mat-form-field style="width: 40%; margin-right: 10%;"  >
+          <mat-label  style="color: #c2185b;">Fecha</mat-label>
+          <input style="color: black;" matInput type="date" [(ngModel)]="turno.fecha" name="psw">
+        </mat-form-field>
+        <mat-form-field style="width: 40%;" >
+            <mat-label  style="color: #c2185b;">Hora</mat-label>
+            <input style="color: black;" matInput type="Time" [(ngModel)]="turno.hora" name="psw">
+        </mat-form-field>
+
+    
+        <br>
+        <button style="margin-top: 2rem;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Solicitar Turno</button>
+      
+      </form>
+    
+    </mat-card>
+  
+  </div>

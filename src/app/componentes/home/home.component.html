@@ -1,0 +1,170 @@
+<!-- <mat-toolbar style="background-color: #c2185b; color: white;" class="expanded-toolbar"> -->
+    <nav  class="navbar navbar-expand-lg navbar-dark " style="background-color: #c2185b; width: 100%; position: fixed;">
+        <a class="navbar-brand" routerLink="/Bienvenido"><i class="fa fa-home"></i></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <!-- <li class="nav-item">
+                    <a class="nav-link" routerLink="/Juegos">Menú</a>
+                </li> -->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+                        aria-haspopup="true" aria-expanded="false">
+                        Componentes
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+
+                        <a *ngIf="usuario.rol == 'paciente'" class="dropdown-item" routerLink="/solicitarTurno">Solicitar turno</a>
+                        <a class="dropdown-item" routerLink="/listadoTurnos">Listado Turnos</a>
+                        <a *ngIf="usuario.rol == 'admin'" class="dropdown-item" routerLink="/altaAdmin">Alta Admin</a>
+                        <!-- <a class="dropdown-item" routerLink="/ActorListado">Actor listado</a> -->
+                        <!-- <a class="dropdown-item" routerLink="/ActorPelicula">Actor-Pelicula</a> -->
+    
+                    </div>
+                </li>
+                
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <a style="color: aliceblue;" class="nav-link"  tabindex="-1" aria-disabled="true" title="Desconectarse"
+                (click)="logOut()">
+                <i class="fa fa-sign-out"></i>
+            </a>
+            </form>
+        </div>
+    </nav>
+
+    <header >
+        <div class="contenedor ld ld-float-rtl-in">
+    
+           <div class="contenedor_texto">
+    
+              <div class="texto">
+                  <h1 class="nombre">{{usuario.nombre}} {{usuario.apellido}}</h1>
+                <h2 class="profesion">Bienvenido</h2>
+    
+              </div>
+    
+          </div>
+    
+        </div>
+    </header>
+    <section class="main ">
+    
+      <section class="acerca_de ">
+          <div class="contenedor ld ld-blur-in">
+              <div *ngIf="usuario.rol != 'paciente'" class="foto ld ld-vortex-in">
+                  <img class="img" src="../../../assets/fondo.png" width="250" height="250" alt="Joaquin Esposito">
+              </div>
+              <div *ngIf="usuario.rol == 'paciente'" class="foto ld ld-vortex-in">
+                <img class="img" [src]="usuario.img1" width="250" height="250" alt="Joaquin Esposito">
+            </div>
+              <div id="quien" class="texto">
+                  <h3 class="titulo">Somos Joes Medical</h3>
+                  <p>Somos una <span class="bold">Clínica destacada</span> en nuestro labor, reconocida por la OMS, como una de las mejores del mundo, pero nuestro principal objetivo es  <strong> Cuidarte y mantenerte a salvo</strong> a vos y a tu familia.</p>
+              </div>
+              <hr>
+              <div class="fila">
+                <div (click)="turnos()" id="misTurnos" class="turnos" style="margin-right: 5rem;">
+                  <!-- <h3 style="color: black;">Mis turnos</h3> -->
+                  <label *ngIf="usuario.rol =='paciente'" for="" style="font-size: 2rem;">Mis turnos</label>
+                  <label *ngIf="usuario.rol!='paciente'" for="" style="font-size: 2rem;"> Turnos</label>
+
+                  <div>
+                      <img style="width: 15rem; height: 15rem;" src="../../../assets/misturnos.png" alt="">
+                      
+                 </div>
+
+                </div>
+                <div *ngIf="usuario.rol == 'paciente'" (click)="solicitarTurno()" id="turnos" class="turnos" style="margin-left: 5rem;">
+                   <!-- <h3 style="color: black;">Solicitar Nuevo turno</h3>  -->
+                   
+                       <img style="width: 18rem; height: 18rem;" src="../../../assets/turno.png" alt="">
+
+                   
+                </div>
+                <div *ngIf="usuario.rol == 'admin'" (click)="altaAdmin()" id="turnos" class="turnos" style="margin-left: 5rem;">
+                    <!-- <h3 style="color: black;">Solicitar Nuevo turno</h3>  -->
+                  <label  for="" style="font-size: 2rem;">Alta Admin</label>
+                         
+                        <img style="width: 18rem; height: 18rem;" src="../../../assets/user.png" alt="">
+ 
+                    
+                 </div>
+            </div>
+            <hr>
+            <div id="que" class="texto">
+              <h3 class="titulo">Tu salud es nuetra Prioridad</h3>
+              <p>Más de tres décadas de trayectoria institucional avalan nuestro desempeño profesional, encontrándonos hoy con la implementación de las más modernas tecnologías médicas al servicio de las personas.
+                Día a día renovamos el espíritu de superación humana, profesional y científica que nos dio origen. </p>
+          </div>
+          <hr>
+    
+          </div>
+      </section>
+      <section class="trabajos ld ld-blur-in ">
+        <div id="donde" class="contenedor">
+          <h3 class="titulo">¿Donde nos encontramos?</h3>
+          <div class="contenedor_trabajos">
+           <div class="trabajo">
+    
+               <div class="thumb">
+                 <img src="../../../assets/Bs.jpg" width="500" height="500" alt="Anuncio Uno">
+                 <div class="descripcion">
+                     <h3>Buenos Aires</h3>
+                     <p class="nombre">Av. Cordoba 3560</p>
+    
+                 </div>
+    
+    
+               </div>
+           </div>
+           <div class="trabajo">
+    
+               <div class="thumb" style="height: auto;">
+                 <img src="../../../assets//Cordoba.jpg" width="500" height="500" alt="Anuncio Dos">
+                 <div class="descripcion">
+                     <h3>Córdoba</h3>
+                     <p class="nombre">Av.Colón 536</p>
+    
+                 </div>
+    
+    
+               </div>
+           </div>
+           <div class="trabajo">
+    
+               <div class="thumb">
+                 <img src="../../../assets/tucuman.jpeg" width="500" height="500" alt="Anuncio Tres">
+                 <div class="descripcion">
+                     <h3>Tucumán</h3>
+                     <p class="nombre">Av. San mertin 1780</p>
+    
+                 </div>
+    
+    
+               </div>
+           </div>
+    
+          </div>
+        </div>
+    
+      </section>
+    
+    
+    </section>
+    
+    <footer>
+    
+      <section class="redes_sociales">
+       <div class="contenedor">
+           <a href="https://www.facebook.com/joako.esposito" class="facebook"><i class="fa fa-facebook"></i></a>
+           <a href="https://github.com/espositojoaquin" class="github"><i class="fa fa-github"></i></a>
+           <a href="https://www.linkedin.com/in/joaqu%C3%ADn-esp%C3%B3sito-04209b194/" class="linkedin"><i class="fa fa-linkedin"></i></a>
+       </div>
+      </section>
+    </footer>
+  

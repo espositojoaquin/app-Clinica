@@ -1,0 +1,152 @@
+
+mat-card {
+    max-width: 400px;
+    margin: 2em auto;
+    text-align: center;
+}
+.container {
+    margin-top: 5rem;
+    display: flex;
+    z-index:999;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    border-radius: 1rem;
+    background-color: white;
+    -webkit-box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+-moz-box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+box-shadow: -2px 7px 29px 6px rgba(0,0,0,0.75);
+
+   
+
+}
+.contenedor{
+   
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    height: 100%;
+    background-image:url('../../../assets/fondo.jpg');
+
+   
+
+}
+form{
+    padding: 1rem;
+   
+    
+}
+
+
+/*-.jumbotron{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    background-color: white;
+    width: auto;
+    height: auto;
+  }
+  form {
+     
+      width: auto;
+      padding: 10px;
+      background:white;
+      border-radius: 2rem;
+      border: none;
+      width: auto;
+      height: auto;
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+      -webkit-box-shadow: 7px 7px 20px -8px rgba(0,3,5,1);
+      -moz-box-shadow: 7px 7px 20px -8px rgba(0,3,5,1);
+      box-shadow: 7px 7px 20px -8px rgba(0,3,5,1);
+  }
+  
+  input[type=email], input[type=password] {
+      margin-bottom: 2rem;
+  }
+  .invitado{
+      justify-content: center;
+  }
+  
+  .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      outline:none;
+      cursor: pointer;
+      border-radius: 1rem;
+      width: 70%;
+      margin-bottom: 2rem;
+     
+      align-content: center;
+  
+ 
+  
+  }
+  
+  button:hover {
+      opacity: 0.8;
+  }
+  
+  .cancelbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #f44336;
+  }
+  .aceptbtn {
+      width: auto;
+      padding: 10px 18px;
+      background-color: #3664F4;
+  }
+  .imgcontainer {
+      text-align: center;
+      margin: 24px 0 12px 0;
+  }
+  
+  img.avatar {
+      width: 40%;
+      border-radius: 50%;
+      background-color: white;
+      border: none!important;
+      border-color: white;
+  
+  }
+  
+  .container {
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      justify-content: center;
+  
+  }
+  .divBoton{
+      display: flex;
+      flex-direction: column;
+      flex-wrap: wrap;
+      align-content: center;
+  }
+  
+  span.psw {
+      float: right;
+      padding-top: 16px;
+  }
+  .error{
+      border:1px solid rgb(214, 9, 9);
+  }
+  
+  
+  @media screen and (max-width: 900px) {
+      span.psw {
+         display: block;
+         float: none;
+      }
+      form{
+        width: auto;
+      }
+  
+  }*/
