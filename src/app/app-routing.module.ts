@@ -7,6 +7,7 @@ import { RegistroComponent } from './componentes/registro/registro.component';
 import { SolicitarTurnoComponent } from './componentes/solicitar-turno/solicitar-turno.component';
 import { TurnosListComponent } from './componentes/turnos-list/turnos-list.component';
 import { VerificacionCuentaComponent } from './componentes/verificacion-cuenta/verificacion-cuenta.component';
+import { VerificacionProfesionalComponent } from './componentes/verificacion-profesional/verificacion-profesional.component';
 import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
@@ -17,7 +18,9 @@ const routes: Routes = [
   {path:'Home',component:HomeComponent,canActivate:[AuthGuard]},
   {path:'solicitarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]},
   {path:'listadoTurnos',component:TurnosListComponent,canActivate:[AuthGuard]},
-  {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]}
+  {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
+  {path:'verificacionProfesional',component:VerificacionProfesionalComponent,canActivate:[AuthGuard]}
+
 
 
 
