@@ -3,18 +3,20 @@ import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 //import { UploadService } from './upload.service';
 
+//import * as admin from 'firebase-admin';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 
-import * as firebase from "firebase/app";
 
-import {environment} from '../../environments/environment';
+import * as firebase from "firebase/app";
+import * as admin from 'firebase-admin';
+
 
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
-import { Turnos, Usuario } from '../models/models.module';
+import { Profesional, Turnos, Usuario } from '../models/models.module';
 import { promise } from 'protractor';
 import { rejects } from 'assert';
 import { ToastrService } from 'ngx-toastr';
@@ -24,18 +26,34 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthService {
   private usuario:Observable<firebase.User>;
- // db = firebase.firestore();
+  dba = firebase.firestore();
+  serviceAccount = require("../../../../app-clinicaonline-firebase-adminsdk-g2j5r-01d2be1864.json");
+  
+  // admin.initializeApp({
+  //   credential: admin.credential.cert(serviceAccount),
+  //   databaseURL: "https://app-clinicaonline.firebaseio.com"
+  // });
+  // ad = admin.initializeApp({
+  //   credential: admin.credential.cert(this.serviceAccount),
+  //   databaseURL: "https://app-clinicaonline.firebaseio.com"
+  // })
+  // ad = admin.initializeApp({
+  //   credential: admin.credential.applicationDefault(),
+  //   databaseURL: 'https://<DATABASE_NAME>.firebaseio.com'
+  // });
 
 
   constructor(public router: Router,
               public angularFireAuth:AngularFireAuth,
               public storage:AngularFireStorage,
               private db: AngularFirestore,
-              private toas:ToastrService) {
+              private toas:ToastrService,
+              ) {
               this.usuario = this.angularFireAuth.authState;
             }
 
             getCurrentUserMail(): string {
+              
               return firebase.auth().currentUser.email;
             }
 
@@ -43,7 +61,7 @@ export class AuthService {
               let user = this.angularFireAuth.currentUser;
               if(user != undefined && user != null)
               { 
-                console.info(JSON.stringify(user))
+              //  console.info(JSON.stringify(user))
                 return true;
               }
               else
@@ -230,7 +248,6 @@ export class AuthService {
 
               async registerTurnos(turno:Turnos){
                 return new Promise((resolve, reject) =>{
-                  
                   this.db.collection("turnos").ref.orderBy('id',"desc").limit(1).get().then(res=>{    
                     res.forEach(a=>{
                       let ida =  Number(a.id) + 1;
@@ -276,7 +293,13 @@ export class AuthService {
                 
                 return new Promise((resolve, reject) => {
                   this.angularFireAuth.createUserWithEmailAndPassword(usuario.email, usuario.clave)
+                //  admin.auth().createUser({
+                //   email: usuario.email,
+                //   password: usuario.clave,
+                  
+                // })
                     .then(res => {
+                      
                       this.sendVerificationEmail().then(res =>{
                         console.log("Se envio bien el mail");
                        // alert("Admin dado de alta con éxito");
@@ -301,6 +324,37 @@ export class AuthService {
                 });
 
               }
+
+              updateActor(actor:Profesional)
+              { 
+                return  this.db.collection('usuarios').doc(actor.uid.toString()).update({
+                  atencion: actor.atencion,
+                  hola: "prueba"
+                 
+                }) 
+
+              }
+
+
+              // async registerPB(usuario:Usuario)
+              // {
+              //    admin.auth().createUser({
+              //     email: 'user@example.com',
+              //     emailVerified: false,
+              //     phoneNumber: '+11234567890',
+              //     password: 'secretPassword',
+              //     displayName: 'John Doe',
+              //     photoURL: 'http://www.example.com/12345678/photo.png',
+              //     disabled: false
+              //   })
+              //     .then(function(userRecord) {
+              //       // See the UserRecord reference doc for the contents of userRecord.
+              //       console.log('Successfully created new user:', userRecord.uid);
+              //     })
+              //     .catch(function(error) {
+              //       console.log('Error creating new user:', error);
+              //     });
+              // }
 
 
 

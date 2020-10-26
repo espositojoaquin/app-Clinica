@@ -27,24 +27,26 @@ export class Usuario{
 }
 export class Profesional{
 
- id:string;
+  uid:string;
   tipo:string;
- nombre:string;
+  nombre:string;
   apellido:string;
   email:string;
   dni:string;
   estado:string;
   especialidades:Array<any>;
+  atencion:Array<any>;
 
   constructor(){
     this.tipo = "profesional";
-     this.nombre = "a";
+    this.nombre = "a";
     this.apellido = "a";
-    this.id = "a";
+    this.uid = "a";
     this.dni = "a";
     this.email = "a";
     this.especialidades = [];
     this.estado = "pendiente";
+    this.atencion = [];
   }
 
 }

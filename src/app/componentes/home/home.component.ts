@@ -41,6 +41,11 @@ export class HomeComponent implements OnInit {
     this.route.navigate(['/listadoTurnos']); 
 
   }
+  horarios(){
+    ///horarios
+    this.route.navigate(['/horarios']); 
+
+  }
  
   logOut()
   {

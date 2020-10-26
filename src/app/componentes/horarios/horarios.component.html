@@ -1,0 +1,46 @@
+<mat-toolbar style="background-color: #c2185b; color: white;" class="expanded-toolbar">
+    <img style="height: 3rem; width: 3rem; border-radius: 100%; margin-right: 2rem;" src="../../../assets/fondo.png" alt="">
+      Selecciona tus Horarios
+      <div class="atras">
+        <a style="color: aliceblue;" class="nav-link" href="javascript: history.go(-1)" tabindex="-1" aria-disabled="true" title="Atrás"
+        >
+        <i class="fa fa-sign-out"></i>
+       </a>
+      </div>
+  </mat-toolbar>
+
+  <div class="container">
+      <div class="horarios">
+          <p>Al Seleccionar Días y horarios especificos, reducira la visivilidad de los turnos a Aceptar ajustandose a estas restricciones.De no ingresar ninguno, se concidera que esta disponible en los dias y horarios de atencion de la clínica.
+          </p>
+          <div class="row">
+            <mat-form-field style="width: 25%;" class="full-width-input">
+                <mat-label style="color: #c2185b;">Seleccione un Día</mat-label>
+            <mat-select  name="tipo" [(ngModel)]="dia"> 
+  
+              <mat-option *ngFor="let item of dias" value="{{item}}">{{item}}</mat-option>
+             
+            </mat-select>
+         </mat-form-field>
+         <mat-form-field style="width: 25%;" class="full-width-input">
+          <mat-label style="color: #c2185b;">Seleccione una hora</mat-label>
+      <mat-select  name="tipo" [(ngModel)]="hora"> 
+
+        <mat-option *ngFor="let item of horarios" value="{{item}}">{{item}}</mat-option>
+       
+      </mat-select>
+   </mat-form-field>
+   <button class="btn btn-success" (click)="atencion()">Agregar</button>
+  
+
+
+
+         <!-- <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>Elija un dia</mat-label>
+            <input matInput [matDatepickerFilter]="myFilter" [matDatepicker]="picker">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field> -->
+          </div>
+      </div>
+  </div>

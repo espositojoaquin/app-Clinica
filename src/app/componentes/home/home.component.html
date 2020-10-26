@@ -8,9 +8,7 @@
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-                <!-- <li class="nav-item">
-                    <a class="nav-link" routerLink="/Juegos">Menú</a>
-                </li> -->
+           
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
                         aria-haspopup="true" aria-expanded="false">
@@ -21,7 +19,7 @@
                         <a *ngIf="usuario.rol == 'paciente'" class="dropdown-item" routerLink="/solicitarTurno">Solicitar turno</a>
                         <a class="dropdown-item" routerLink="/listadoTurnos">Listado Turnos</a>
                         <a *ngIf="usuario.rol == 'admin'" class="dropdown-item" routerLink="/altaAdmin">Alta Admin</a>
-                        <!-- <a class="dropdown-item" routerLink="/ActorListado">Actor listado</a> -->
+                        <a *ngIf="usuario.rol == 'profesional'"  class="dropdown-item" routerLink="/horarios">Horarios</a>
                         <!-- <a class="dropdown-item" routerLink="/ActorPelicula">Actor-Pelicula</a> -->
     
                     </div>
@@ -94,6 +92,14 @@
  
                     
                  </div>
+                 <div *ngIf="usuario.rol == 'profesional'" (click)="horarios()" id="turnos" class="turnos" style="margin-left: 5rem;">
+                  <!-- <h3 style="color: black;">Solicitar Nuevo turno</h3>  -->
+                <label  for="" style="font-size: 2rem;"> Tus Horarios</label>
+                       
+                      <img style="width: 18rem; height: 15rem;" src="../../../assets/alarma.png" alt="">
+
+                  
+               </div>
             </div>
             <hr>
             <div id="que" class="texto">

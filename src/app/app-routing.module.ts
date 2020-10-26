@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 import { HomeComponent } from './componentes/home/home.component';
+import { HorariosComponent } from './componentes/horarios/horarios.component';
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
 import { SolicitarTurnoComponent } from './componentes/solicitar-turno/solicitar-turno.component';
@@ -19,6 +20,7 @@ const routes: Routes = [
   {path:'solicitarTurno',component:SolicitarTurnoComponent,canActivate:[AuthGuard]},
   {path:'listadoTurnos',component:TurnosListComponent,canActivate:[AuthGuard]},
   {path:'altaAdmin',component:AltaAdminComponent,canActivate:[AuthGuard]},
+  {path:'horarios',component:HorariosComponent,canActivate:[AuthGuard]},
   {path:'verificacionProfesional',component:VerificacionProfesionalComponent,canActivate:[AuthGuard]}
 
 

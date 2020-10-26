@@ -29,6 +29,7 @@ import { SolicitarTurnoComponent } from './componentes/solicitar-turno/solicitar
 import { TurnosListComponent } from './componentes/turnos-list/turnos-list.component';
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 import { VerificacionProfesionalComponent } from './componentes/verificacion-profesional/verificacion-profesional.component';
+import { HorariosComponent } from './componentes/horarios/horarios.component';
 
 
 
@@ -42,7 +43,8 @@ import { VerificacionProfesionalComponent } from './componentes/verificacion-pro
     SolicitarTurnoComponent,
     TurnosListComponent,
     AltaAdminComponent,
-    VerificacionProfesionalComponent
+    VerificacionProfesionalComponent,
+    HorariosComponent
   ],
   imports: [
     BrowserModule,
