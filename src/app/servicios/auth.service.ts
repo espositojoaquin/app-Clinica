@@ -26,8 +26,8 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthService {
   private usuario:Observable<firebase.User>;
-  dba = firebase.firestore();
-  serviceAccount = require("../../../../app-clinicaonline-firebase-adminsdk-g2j5r-01d2be1864.json");
+ /* dba = firebase.firestore();
+  serviceAccount = require("../../../../app-clinicaonline-firebase-adminsdk-g2j5r-01d2be1864.json");*/
   
   // admin.initializeApp({
   //   credential: admin.credential.cert(serviceAccount),
