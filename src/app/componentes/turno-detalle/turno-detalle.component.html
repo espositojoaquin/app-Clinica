@@ -1,0 +1,17 @@
+<div class="card border-dark mb-3 animated fadeIn faster ld ld-jump-in container" *ngIf="turno">
+   
+    <div  style="height: auto;" >
+        <div class="col-md-12">
+            <div class="card-body text-center w-100">
+                <h2 class="card-title"> {{ turno.paciente.nombre + " " + turno.paciente.apellido | uppercase }} </h2>
+                <p > <strong>Estado:</strong>  {{ turno.estado}} </p>
+                <p>Profesional: {{ turno.profesional.apellido }}</p>
+                <p >Fecha de Turno: {{ turno.fecha }}</p>
+                <p>Especliadad: {{turno.especialidad}}</p>
+                <button class="btn btn-danger btn-block" *ngIf="borrado === 1" (click)="borrarActor(actor.id)">
+                    <i class="fas fa-trash"></i> Borrar
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

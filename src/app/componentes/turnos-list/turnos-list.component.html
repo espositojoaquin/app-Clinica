@@ -8,7 +8,19 @@
        </a>
       </div>
   </mat-toolbar>
+
+
   <div class="div1">
+    <!-- <mat-form-field style="width: 40%; " class="full-width-input">
+      <mat-label style="color: #c2185b;">Filtrar Por..</mat-label>
+      <mat-select  name="horas"> 
+          
+        <mat-option *ngFor="let item of horas"  [value]="item">{{item}}</mat-option>
+        
+        
+      </mat-select>
+   </mat-form-field> -->
+    
     <table class="table table-hover table-bordered animated fadeIn faster ld ld-slide-ttb-in">
         <thead>
           <tr class="bg-primary" style="color: white;">
@@ -33,10 +45,10 @@
             <td>{{turno.fecha}} </td>
             <td>{{turno.hora}} </td>
             <td>{{turno.profesional.apellido}} </td>
-            <td>{{turno.estado}}</td>
+            <td>{{turno.estado|estadoTurno}}  </td>
             <td>{{turno.comentario}} </td>
             <td *ngIf="usuario.rol !='admin'">
-              <button *ngIf="usuario.rol == 'paciente'" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
+              <button *ngIf="usuario.rol == 'paciente'" (click)="cancelar(turno)" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
               <button *ngIf="usuario.rol == 'profesional'" class="btn btn-success" style="margin-right: 1rem;">Aceptar</button>
               <button *ngIf="usuario.rol == 'profesional'" class="btn btn-danger" >Rechazar</button>
 
@@ -47,6 +59,5 @@
         </tbody>
       </table>
       
-      
-  
   </div>
+

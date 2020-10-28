@@ -16,17 +16,15 @@
       </div>
       <div mat-card-avatar class="example-header-image"></div>
       <form class="example-form">
-        <mat-form-field style="width: 25%;" class="full-width-input">
+        <!-- <mat-form-field style="width: 25%;" class="full-width-input">
               <mat-label style="color: #c2185b;">Seleccione una Especialidad</mat-label>
           <mat-select [(ngModel)]="turno.especialidad" name="tipo"> 
               
             <mat-option *ngFor="let item of especialidades"  [value]="item.name">{{item.name}}</mat-option>
             
-            <!-- <mat-option value="profesional"> Profesional</mat-option>
-            <mat-option value="paciente"> Paciente </mat-option> -->
             
           </mat-select>
-       </mat-form-field>
+       </mat-form-field> -->
        <br>
         <mat-form-field style="width: 40%; margin-right: 10%;" >
             <mat-label  style="color: #c2185b;" >Nombre</mat-label>
@@ -45,14 +43,41 @@
           <input  style="color: black;" matInput type="email" [(ngModel)]="usuario.email" name="email">
         </mat-form-field>
        
+        <mat-form-field style="width: 40%;margin-right: 10%;" class="full-width-input">
+          <mat-label style="color: #c2185b;">Seleccione una Especialidad</mat-label>
+          <mat-select [(ngModel)]="turno.especialidad" name="tipo"> 
+              
+            <mat-option (click)="cargarProfesionales()"  *ngFor="let item of especialidades"  [value]="item.name">{{item.name}}</mat-option>
+            
+            
+          </mat-select>
+       </mat-form-field>
+
+       <mat-form-field style="width: 40%; " class="full-width-input">
+          <mat-label style="color: #c2185b;">Seleccione un Profesional</mat-label>
+          <mat-select  [disabled]="turno.especialidad == undefined" [(ngModel)]="turno.profesional" name="profesional"> 
+              
+            <mat-option *ngFor="let item of prefesionales"  [value]="item"> <p>{{item.apellido}}</p> <p *ngIf="item.apellido == undefined">{{prefesionales[0]}}</p></mat-option>
+            
+            
+          </mat-select>
+       </mat-form-field>
+
         <mat-form-field style="width: 40%; margin-right: 10%;"  >
           <mat-label  style="color: #c2185b;">Fecha</mat-label>
-          <input style="color: black;" matInput type="date" [(ngModel)]="turno.fecha" name="psw">
+          <input [disabled]="turno.profesional.nombre == 'a' || turno.profesional.nombre == undefined" (change)="cargarHora()" style="color: black;" matInput type="date" [(ngModel)]="turno.fecha" name="psw">
         </mat-form-field>
-        <mat-form-field style="width: 40%;" >
-            <mat-label  style="color: #c2185b;">Hora</mat-label>
-            <input style="color: black;" matInput type="Time" [(ngModel)]="turno.hora" name="psw">
-        </mat-form-field>
+   
+        <mat-form-field style="width: 40%; " class="full-width-input">
+          <mat-label style="color: #c2185b;">Seleccione una Hora</mat-label>
+          <mat-select  [disabled]="horas.length < 1" [(ngModel)]="turno.hora" name="horas"> 
+              
+            <mat-option *ngFor="let item of horas"  [value]="item">{{item}}</mat-option>
+            
+            
+          </mat-select>
+       </mat-form-field>
+        
 
     
         <br>

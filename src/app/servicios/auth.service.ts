@@ -252,16 +252,9 @@ export class AuthService {
                     res.forEach(a=>{
                       let ida =  Number(a.id) + 1;
                       this.db.collection("turnos").doc(ida.toString()).set({
+                       
                        paciente:turno.paciente,
-                       profesional: 
-                        {tipo: "profesional",
-                        nombre: "",
-                        apellido:"indefinido",
-                        id:"",
-                        dni : "",
-                        email : "",
-                        especialidades : [],
-                        estado: "pendiente"},
+                       profesional:turno.profesional,
                        fecha:turno.fecha,
                        id:ida,
                        hora:turno.hora,
@@ -325,14 +318,23 @@ export class AuthService {
 
               }
 
-              updateActor(actor:Profesional)
+              updateHorario(actor:Profesional)
               { 
                 return  this.db.collection('usuarios').doc(actor.uid.toString()).update({
                   atencion: actor.atencion,
-                  hola: "prueba"
+                 
                  
                 }) 
 
+              }
+
+              bajaTurno(turno:Turnos)
+              {   
+                
+                return  this.db.collection('turnos').doc(turno.id.toString()).update({
+                 estado: -1,
+                
+                }) 
               }
 
 

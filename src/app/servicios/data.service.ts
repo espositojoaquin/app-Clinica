@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/firestore';
 import { AuthService } from './auth.service';
 import { firestore } from 'firebase';
+import { Profesional } from '../models/models.module';
 
 @Injectable({
   providedIn: 'root'
@@ -30,6 +31,36 @@ export class DataService {
 
   getUserByUid(uid: string) {
     return this.dbUsersRef.doc(uid).valueChanges();
+  }
+
+ async getProfesionales(especialidad:string)
+  { 
+    let usrsRef = await this.dbUsersRef.ref.where("rol", "==", "profesional").get();
+    let listado:Array<any> = new Array<any>();
+    let profesionales = [];
+    let aux = [];
+    // return usrsRef;
+
+     usrsRef.docs.map(function(x){
+        listado.push(x.data());
+    });
+
+    listado.forEach(element => {
+        aux.push(element.especialidades)
+        aux[listado.indexOf(element)].forEach(res => {
+
+          if(res == especialidad)
+          {
+            profesionales.push(element);
+          }
+          
+        });
+    });
+
+    console.info(profesionales);
+
+    return profesionales;
+
   }
 
 

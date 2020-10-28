@@ -25,6 +25,7 @@ mat-card {
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-end;
+
     
  }
  .contenedor{
@@ -81,3 +82,6 @@ mat-card {
      margin-bottom: 1rem;
      
  }
+ .mat-form-field-appearance-fill .mat-form-field-flex {
+    background-color: white;
+}

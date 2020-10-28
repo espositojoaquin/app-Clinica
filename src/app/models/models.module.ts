@@ -52,7 +52,8 @@ export class Profesional{
 }
 
 export class Turnos{
-
+  
+ id:number;
  paciente:Usuario;
  profesional:Profesional = new Profesional();
  fecha:Date;
@@ -65,6 +66,7 @@ export class Turnos{
    //this.profesional.tipo = "profesional";
     this.estado=1;
     this.comentario = "-";
+   // this.fecha = new Date();
     
 
  }

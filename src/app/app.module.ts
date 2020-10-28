@@ -30,6 +30,10 @@ import { TurnosListComponent } from './componentes/turnos-list/turnos-list.compo
 import { AltaAdminComponent } from './componentes/alta-admin/alta-admin.component';
 import { VerificacionProfesionalComponent } from './componentes/verificacion-profesional/verificacion-profesional.component';
 import { HorariosComponent } from './componentes/horarios/horarios.component';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
+import { EstadoTurnoPipe } from './pipes/estado-turno.pipe';
+import { TurnoDetalleComponent } from './componentes/turno-detalle/turno-detalle.component';
+import { FiltroPipe } from './pipes/filtro.pipe';
 
 
 
@@ -44,7 +48,10 @@ import { HorariosComponent } from './componentes/horarios/horarios.component';
     TurnosListComponent,
     AltaAdminComponent,
     VerificacionProfesionalComponent,
-    HorariosComponent
+    HorariosComponent,
+    EstadoTurnoPipe,
+    TurnoDetalleComponent,
+    FiltroPipe
   ],
   imports: [
     BrowserModule,
@@ -61,7 +68,9 @@ import { HorariosComponent } from './componentes/horarios/horarios.component';
     AngularFireStorageModule
 
   ],
-  providers: [],
+  providers: [
+   {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

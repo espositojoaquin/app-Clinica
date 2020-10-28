@@ -20,9 +20,9 @@ export class HorariosComponent implements OnInit {
   dia:any;
   hora:any;
   profesional:any = new Profesional();
+  displayedColumns: string[] = ['Nombre', 'Día', 'Hora','Acción'];
   ngOnInit(): void {
-    this.setHorarios(8,20);
-
+  
     var uid="0";
     this.auth.getUserUid().then(res =>{
       uid = res.toString();
@@ -41,7 +41,6 @@ export class HorariosComponent implements OnInit {
     // Prevent Saturday and Sunday from being selected.
     return day !== 0 ;
   }
-
   setHorarios(inicio:number,final:number)
   {
      this.horarios = [];
@@ -55,28 +54,60 @@ export class HorariosComponent implements OnInit {
 
   }
 
+  sabado()
+  {
+    if(this.dia == "Sábado")
+    {
+      this.setHorarios(8,15);
+    }
+    else
+    {
+      this.setHorarios(8,20);
+
+    }
+  }
+
   atencion()
   { 
     let aux:Array<any> = new Array();
     let nuev:Array<any> = new Array();
     aux.push(this.profesional.atencion);
     aux.forEach(item =>{
-      nuev.push(item[0]);
+      nuev.push(item);
     })
-    nuev.push({dia:this.dia,hora:this.hora});
-    this.profesional.atencion = nuev;
-    console.info(this.profesional.atencion);
+    nuev[0].push({dia:this.dia,hora:this.hora});
+    
+     this.profesional.atencion = nuev[0];
 
-    console.info(this.profesional);
 
-    this.auth.updateActor(this.profesional).then(res =>{
+    this.auth.updateHorario(this.profesional).then(res =>{
        this.toast.success("Día y horario guardado con éxito");
     }).catch(error =>{
       this.toast.error(error,"Error");
     });
 
     
- 
+  }
+
+  eliminar(item)
+  { 
+   // console.log(item);
+     let aux:Array<any> = new Array();
+     let nuev:Array<any> = new Array();
+
+     aux.push(this.profesional.atencion);
+    
+     aux[0].splice(aux[0].indexOf(item),1);
+     
+     this.profesional.atencion = aux[0];
+     this.auth.updateHorario(this.profesional).then(res =>{
+      this.toast.success("Registro Eliminado con éxito");
+   }).catch(error =>{
+     this.toast.error(error,"Error");
+   });
+
+
+    
   }
 
 }

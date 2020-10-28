@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Turnos, Usuario } from 'src/app/models/models.module';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { DataService } from 'src/app/servicios/data.service';
@@ -12,10 +13,11 @@ export class TurnosListComponent implements OnInit {
    
   listado:Array<Turnos> = new Array<Turnos> ();
   usuario:any = new Usuario();
-  constructor( private data:DataService,private auth:AuthService) { }
+  filtro = ['Profesional','Especialidad']
+  constructor( private data:DataService,private auth:AuthService,private toast:ToastrService) { }
 
   ngOnInit(): void {
-    
+
     var uid="0";
      this.auth.getUserUid().then(res =>{
        uid = res.toString();
@@ -27,7 +29,7 @@ export class TurnosListComponent implements OnInit {
               this.data.getTurnos().subscribe(res =>{
             
               console.info(this.usuario.dni);
-              this.listado = res.filter(res => res.paciente.dni == this.usuario.dni);
+              this.listado = res.filter(res => res.paciente.dni == this.usuario.dni && res.estado != -1);
                 
               })
 
@@ -68,6 +70,15 @@ export class TurnosListComponent implements OnInit {
 
 
 
+  } 
+
+  cancelar(turno:Turnos)
+  {
+      this.auth.bajaTurno(turno).then(res=>{
+        this.toast.success("Turno Cancelado con éxito");
+      }).catch(error=>{
+        this.toast.error("Hemos tenido un problema la cancelar el turno","Error");
+      })
   }
 
 }

@@ -2,14 +2,17 @@ import { Component, OnInit } from '@angular/core';
 import { info } from 'console';
 import { database } from 'firebase';
 import { ToastrService } from 'ngx-toastr';
-import { Turnos, Usuario } from 'src/app/models/models.module';
+import { Profesional, Turnos, Usuario } from 'src/app/models/models.module';
 import { DataService } from 'src/app/servicios/data.service';
 import { AuthService } from "../../servicios/auth.service";
+ 
+
 
 @Component({
   selector: 'app-solicitar-turno',
   templateUrl: './solicitar-turno.component.html',
-  styleUrls: ['./solicitar-turno.component.css']
+  styleUrls: ['./solicitar-turno.component.css'],
+  
 })
 export class SolicitarTurnoComponent implements OnInit {
 
@@ -19,14 +22,17 @@ export class SolicitarTurnoComponent implements OnInit {
   especialidades:Array<any> = new Array<any>();
   lista:Array<any>;
   turno:Turnos = new Turnos();
+  prefesionales:any = new Profesional();
+  horas:Array<any> = [];
 
   constructor(private auth:AuthService, private data:DataService, private toastr:ToastrService ) { }
  
 
-  Entrar(){
+  Entrar(){  
     
     this.turno.paciente = this.usuario;
-     
+  
+     console.info(this.turno);
     if(this.validacion())
     {
       console.info(this.turno);
@@ -46,6 +52,11 @@ export class SolicitarTurnoComponent implements OnInit {
 
     this.lista = (this.especialidades.filter(res => res.completed == true )).map(res => res.name);
     console.info(this.lista);
+  }
+  myFilter = (d: Date | null): boolean => {
+    const day = (d || new Date()).getDay();
+    // Prevent Saturday and Sunday from being selected.
+    return day !== 0 ;
   }
 
   ngOnInit(): void {
@@ -74,6 +85,8 @@ export class SolicitarTurnoComponent implements OnInit {
       console.log("Sin Usuario");
      });
 
+    // this.data.getProfesionales("Kinesiología");
+
   }
   validacion()
   {  
@@ -87,6 +100,77 @@ export class SolicitarTurnoComponent implements OnInit {
       return false;
     }
   
+  }
+
+  cargarProfesionales()
+  {    
+    this.horas = [];
+    this.turno.fecha = undefined;
+     this.data.getProfesionales(this.turno.especialidad).then(res =>{
+         console.log(this.turno.especialidad);
+        if(res.length > 0)
+        {
+        this.prefesionales = res;
+        console.info(this.prefesionales);
+        }
+        else
+        {
+          this.prefesionales = ["No hay ningun especialista"];
+        }
+     })
+  }
+
+  cargarHora()
+  {
+    /* this.horas = this.turno.profesional.atencion.map(function(x){return x.hora});
+    console.info(this.horas);*/
+    this.horas = [];
+    
+    let date = new Date(this.turno.fecha);
+    let dia="";
+    let dias=[];
+    console.info();
+    switch(date.getDay())
+    {
+      case 0:
+        dia = "Lunes";
+        break;
+      case 1:
+         dia = "Martes";
+        break;
+      case 2:
+        dia = "Miércoles";
+
+        break;
+      case 3:
+        dia = "Jueves";
+        
+        break;
+      case 4:
+        dia = "Viernes";
+
+        break;
+      case 5:
+        dia = "Sábado";
+        
+        break;
+      case 6:
+        dia = "Domingo";
+
+        break;
+    }
+   // this.horas = this.turno.profesional.atencion.map(function(x){return x.hora});
+   console.log(dia);
+    dias = this.turno.profesional.atencion.filter(function(x){return x.dia == dia})
+    if(dias.length>0)
+    {
+       this.horas = dias.map(function(x){return x.hora});
+       console.info(this.horas);
+    }
+    else
+    {
+      this.toastr.warning("El profesional no atiende el dia de la semana indicado");
+    }
   }
 
 
