@@ -1,27 +1,33 @@
-# AppClinica
+#TP AppClinica
+Trabajo práctico - Laboratorio IV
+_Este proyecto fue generado con Angular CLI version 10.1.6.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.1.6.
+## Sitio de prueba 🚀
 
-## Development server
+https://appc-clinica.herokuapp.com/
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Instalación y ejecución 🔧
 
-## Code scaffolding
+_Instalacion de paquetes_
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```
+ng build
+```
 
-## Build
+_Ejecucion local_
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+```
+ng serve
+```
 
-## Running unit tests
+_Ingresa a `http://localhost:4200/` para la prueba local._
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Construido con 🛠️
 
-## Running end-to-end tests
+* [Angular](https://angular.io/docs)
+* [Material](https://material.angular.io/)
+* [Bootstrap](https://getbootstrap.com/docs/3.3/)
+* [Firebase](https://firebase.google.com/docs)
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+---
+⌨️ _UTN-FRA_ ⌨️
