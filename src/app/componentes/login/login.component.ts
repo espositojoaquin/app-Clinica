@@ -14,6 +14,8 @@ export class LoginComponent implements OnInit {
   clave:string;
   recaptcha: any;
   siteKey:string;
+  desa:boolean = false;
+
 
 
   constructor(private auth:AuthService) { 
@@ -45,6 +47,20 @@ export class LoginComponent implements OnInit {
       console.log("anda");
     })
      
+  }
+
+
+  EntrarSinCaptcha(){
+    if(this.recaptcha)
+    {
+      this.recaptcha = undefined;
+    }
+    else
+    {
+      this.recaptcha="as";
+      this.desa = true;
+
+    }
   }
 
   resolved(captchaResponse: any) {
