@@ -141,8 +141,22 @@ export class AuthService {
   
                 public uploadImg( usuario: Usuario, imagen1, imagen2){
                 return new Promise((resolve,rejects) =>{
-                  this.subirArchivo(usuario.email+"_img1",imagen1,{nombre:usuario.nombre,apellido:usuario.apellido}).then((img)=>{
-                      this.subirArchivo(usuario.email+"_img2",imagen2,{nombre:usuario.nombre,apellido:usuario.apellido}).then(img2=>{
+                  this.subirArchivo(usuario.email+"_img1",imagen1,{nombre:usuario.nombre,
+                    apellido:usuario.apellido,
+                    dni:usuario.dni,
+                    id:usuario.id,
+                    email:usuario.email,
+                    rol:usuario.rol,
+                  
+                  
+                  }).then((img)=>{
+                      this.subirArchivo(usuario.email+"_img2",imagen2,{nombre:usuario.nombre,
+                        apellido:usuario.apellido,
+                        dni:usuario.dni,
+                        id:usuario.id,
+                        email:usuario.email,
+                        rol:usuario.rol,
+                      }).then(img2=>{
                        img.ref.getDownloadURL().then(data=>{
                         usuario.img1 = data;
                         console.log(data); 
