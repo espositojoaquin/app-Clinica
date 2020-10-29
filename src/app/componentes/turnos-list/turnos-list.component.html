@@ -10,16 +10,28 @@
   </mat-toolbar>
 
 
+  <mat-form-field style="width: 40%; " class="full-width-input">
+    <mat-label style="color: #c2185b;">Filtrar Por..</mat-label>
+    <mat-select [(ngModel)]="fitroSeleccionado"  > 
+        
+      <mat-option *ngFor="let item of filtro"  [value]="item">{{item}}</mat-option>
+      
+      
+    </mat-select>
+ </mat-form-field>
+ 
+ <input *ngIf="fitroSeleccionado != 'Dia' && fitroSeleccionado != undefined " type="text" [(ngModel)]="escribir">
+
+ <mat-form-field *ngIf="fitroSeleccionado == 'Dia'" style="width: 40%;" class="full-width-input">
+  <mat-label style="color: #c2185b;">Seleccione un Día</mat-label>
+<mat-select  name="tipo" [(ngModel)]="escribir">
+
+<mat-option *ngFor="let item of dias" value="{{item}}">{{item}}</mat-option>
+
+</mat-select>
+</mat-form-field>
+
   <div class="div1">
-    <!-- <mat-form-field style="width: 40%; " class="full-width-input">
-      <mat-label style="color: #c2185b;">Filtrar Por..</mat-label>
-      <mat-select  name="horas"> 
-          
-        <mat-option *ngFor="let item of horas"  [value]="item">{{item}}</mat-option>
-        
-        
-      </mat-select>
-   </mat-form-field> -->
     
     <table class="table table-hover table-bordered animated fadeIn faster ld ld-slide-ttb-in">
         <thead>
@@ -32,12 +44,12 @@
             <th>Hora</th>
             <th>Profesional</th>
             <th>Estado</th>
-            <th>Comentario</th>
+            <!-- <th>Comentario</th> -->
             <th *ngIf="usuario.rol != 'admin'">Acciones</th>
           </tr>
         </thead>
         <tbody >
-          <tr *ngFor="let turno of listado;">
+          <tr *ngFor="let turno of listado |filtro:fitroSeleccionado :escribir" (click)="tomarTurno(turno)">
             <td> <img [src]="turno.paciente.img1" alt="" width="100" height="100"></td>
             <td>{{turno.paciente.nombre}} </td>
             <td>{{turno.paciente.apellido}} </td>
@@ -46,10 +58,10 @@
             <td>{{turno.hora}} </td>
             <td>{{turno.profesional.apellido}} </td>
             <td>{{turno.estado|estadoTurno}}  </td>
-            <td>{{turno.comentario}} </td>
+            <!-- <td>{{turno.comentario}} </td> -->
             <td *ngIf="usuario.rol !='admin'">
               <button *ngIf="usuario.rol == 'paciente'" (click)="cancelar(turno)" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
-              <button *ngIf="usuario.rol == 'profesional'" class="btn btn-success" style="margin-right: 1rem;">Aceptar</button>
+              <button *ngIf="usuario.rol == 'profesional'" (click)="aceptar(turno)" class="btn btn-success" style="margin-right: 1rem;">Aceptar</button>
               <button *ngIf="usuario.rol == 'profesional'" class="btn btn-danger" >Rechazar</button>
 
 
@@ -59,5 +71,7 @@
         </tbody>
       </table>
       
-  </div>
-
+    </div>
+    <app-turno-detalle [user]="usuario" [turno]="turnoSeleccionado"(eventoMostrarModal)="mostrarEncuesta($event)"></app-turno-detalle>
+    <app-modal-turno [user]="usuario" [turno]="turnoSeleccionado"[mostrar]="mostrarModal" (eventoMostrarModal)="mostrarEncuesta($event)"></app-modal-turno>
+   

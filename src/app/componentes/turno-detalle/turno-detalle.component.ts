@@ -1,5 +1,5 @@
 import { Component, OnInit,Input, Output, EventEmitter } from '@angular/core';
-import { Turnos } from 'src/app/models/models.module';
+import { Turnos, Usuario } from 'src/app/models/models.module';
 
 @Component({
   selector: 'app-turno-detalle',
@@ -7,16 +7,18 @@ import { Turnos } from 'src/app/models/models.module';
   styleUrls: ['./turno-detalle.component.css']
 })
 export class TurnoDetalleComponent implements OnInit {
-  @Input() turno:Turnos 
-  @Output() eventoBorrarPelicula = new EventEmitter<string>();
+  @Input() turno:Turnos;
+  @Input() user:Usuario;
+  @Output() eventoMostrarModal = new EventEmitter<boolean>();
   constructor() { }
 
   ngOnInit(): void {
+   
   }
 
-    candelarTurno(id: string) {
-    this.eventoBorrarPelicula.emit(id);
-    this.turno = null;
+    MostrarModal() {
+    this.eventoMostrarModal.emit(true);
+   // this.turno = null;
     
   }
 

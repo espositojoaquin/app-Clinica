@@ -1,0 +1,26 @@
+<div *ngIf="mostrar"  id="id01" class="modal ld ld-zoom-in">
+    <form class="modal-content animate" >
+      <span (click)="cerrar()" class="close" title="Close Modal">×</span>
+      <div style="margin-top: 3rem;" class="container">
+        
+        <mat-form-field style="width: 100%; " class="full-width-input">
+          <mat-label style="color: #c2185b;">Califique el servicio de 1 a 5</mat-label>
+          <mat-select  (change)="cargarDatos()" [(ngModel)]="turno.calificacionPaciente" [ngModelOptions]="{standalone: true}" > 
+              
+            <mat-option *ngFor="let item of calificaciones"  [value]="item">{{item}}</mat-option>
+            
+            
+          </mat-select>
+          
+       </mat-form-field>    
+       <mat-form-field style="width: 100%;" appearance="fill">
+        <mat-label>Dejanos tu comentario</mat-label>
+        <textarea  [(ngModel)]="turno.opinionPaciente" matInput [ngModelOptions]="{standalone: true}"></textarea>
+      </mat-form-field>
+
+        <div class="clearfix row" style="justify-content: center;">
+          <button  (click)="Enviar()"  type="submit" class="btn-success btn-lg boton " onclick="this.blur();">Enviar Respuesta</button>
+        </div>
+      </div>
+    </form>
+  </div>

@@ -34,6 +34,7 @@ import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { EstadoTurnoPipe } from './pipes/estado-turno.pipe';
 import { TurnoDetalleComponent } from './componentes/turno-detalle/turno-detalle.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
+import { ModalTurnoComponent } from './componentes/modal-turno/modal-turno.component';
 
 
 
@@ -51,7 +52,8 @@ import { FiltroPipe } from './pipes/filtro.pipe';
     HorariosComponent,
     EstadoTurnoPipe,
     TurnoDetalleComponent,
-    FiltroPipe
+    FiltroPipe,
+    ModalTurnoComponent
   ],
   imports: [
     BrowserModule,

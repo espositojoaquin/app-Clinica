@@ -336,6 +336,23 @@ export class AuthService {
                 
                 }) 
               }
+              updateEstadoTurno(turno:Turnos,estado:number)
+              { 
+                return  this.db.collection('turnos').doc(turno.id.toString()).update({
+                  estado: estado,
+                 
+                 }) 
+
+              }
+
+              updateOpinion(turno:Turnos,valor:string,valor2:number)
+              {
+                return  this.db.collection('turnos').doc(turno.id.toString()).update({
+                  opinionPaciente:valor,
+                  calificacionPaciente:valor2
+                 
+                 }) 
+              }
 
 
               // async registerPB(usuario:Usuario)

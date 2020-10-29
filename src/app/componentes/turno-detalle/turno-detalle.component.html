@@ -3,14 +3,27 @@
     <div  style="height: auto;" >
         <div class="col-md-12">
             <div class="card-body text-center w-100">
-                <h2 class="card-title"> {{ turno.paciente.nombre + " " + turno.paciente.apellido | uppercase }} </h2>
+                <h2 *ngIf="user.rol =='paciente'" >Reseña</h2>
+                <p *ngIf="user.rol =='paciente'">{{turno.comentario}}</p>
+                <h2 *ngIf="user.rol =='profesional'" >Comentario Paciente</h2>
+                <p *ngIf="user.rol =='profesional'"> Calificación: {{turno.calificacionPaciente}} </p>
+                <p *ngIf="user.rol =='profesional'">{{turno.opinionPaciente}}</p>
+
+                <!-- <h2 class="card-title"> {{ turno.paciente.nombre + " " + turno.paciente.apellido | uppercase }} </h2>
                 <p > <strong>Estado:</strong>  {{ turno.estado}} </p>
                 <p>Profesional: {{ turno.profesional.apellido }}</p>
                 <p >Fecha de Turno: {{ turno.fecha }}</p>
                 <p>Especliadad: {{turno.especialidad}}</p>
                 <button class="btn btn-danger btn-block" *ngIf="borrado === 1" (click)="borrarActor(actor.id)">
                     <i class="fas fa-trash"></i> Borrar
-                </button>
+                </button> -->
+                <button (click)="MostrarModal()" class="btn btn-primary btn-block">
+                    <!-- <i class="fas fa-trash"></i> Encuesta -->
+                   <p *ngIf="user.rol =='paciente'">Encuesta</p> 
+                   <p *ngIf="user.rol =='profesional'">Atender</p> 
+
+                </button> 
+
             </div>
         </div>
     </div>

@@ -13,10 +13,17 @@ export class TurnosListComponent implements OnInit {
    
   listado:Array<Turnos> = new Array<Turnos> ();
   usuario:any = new Usuario();
-  filtro = ['Profesional','Especialidad']
+  filtro = ['Profesional','Especialidad','Dia'];
+  dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
+  fitroSeleccionado:string;
+  escribir:string;
+  dia:string;
+  turnoSeleccionado:Turnos;
+  mostrarModal:boolean;
   constructor( private data:DataService,private auth:AuthService,private toast:ToastrService) { }
 
   ngOnInit(): void {
+
 
     var uid="0";
      this.auth.getUserUid().then(res =>{
@@ -39,16 +46,9 @@ export class TurnosListComponent implements OnInit {
               if(this.usuario.rol == "profesional")
               {
                 this.data.getTurnos().subscribe(tur =>{
-            
-                  this.usuario.especialidades.forEach(res => {
-                     
-                      tur.forEach(aux =>{
-                        if(aux.especialidad == res)
-                        this.listado.push(aux);
 
-                      })
-                    
-                  });
+                  this.listado = tur.filter(res => res.profesional.dni == this.usuario.dni);
+            
                     
                   })
               }
@@ -71,14 +71,30 @@ export class TurnosListComponent implements OnInit {
 
 
   } 
+  mostrarEncuesta(dato:boolean)
+  {
+    this.mostrarModal = dato;
+  }
+  tomarTurno(turno:Turnos)
+  {
+     this.turnoSeleccionado = turno;
+  }
 
   cancelar(turno:Turnos)
   {
-      this.auth.bajaTurno(turno).then(res=>{
+      this.auth.updateEstadoTurno(turno,-1).then(res=>{
         this.toast.success("Turno Cancelado con éxito");
       }).catch(error=>{
         this.toast.error("Hemos tenido un problema la cancelar el turno","Error");
       })
+  }
+  aceptar(turno:Turnos)
+  {
+    this.auth.updateEstadoTurno(turno,1).then(res=>{
+      this.toast.success("Turno Aceptado con éxito");
+    }).catch(error=>{
+      this.toast.error("Hemos tenido un problema la cancelar el turno","Error");
+    })
   }
 
 }
