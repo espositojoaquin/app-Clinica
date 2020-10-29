@@ -16,7 +16,13 @@ export class ModalTurnoComponent implements OnInit {
   @Input() turno:Turnos;
   @Input() user:Usuario;
   @Input() mostrar:boolean;
+  @Input() cancelar:boolean;
+  @Input() rechazar:boolean;
+
+
   @Output() eventoMostrarModal = new EventEmitter<boolean>();
+  @Output() eventoJustifacion = new EventEmitter<boolean>();
+
 
   
   constructor(private auth:AuthService,private toas:ToastrService) { }
@@ -28,16 +34,63 @@ export class ModalTurnoComponent implements OnInit {
   cerrar()
   {
     this.eventoMostrarModal.emit(false);
+    this.eventoJustifacion.emit(false);
+
   }
   Enviar()
-  {
-    
-    this.auth.updateOpinion(this.turno,this.turno.opinionPaciente,this.turno.calificacionPaciente).then(res=>{
-      this.toas.success("Encuesta Guardada con éxito");
-      this.eventoMostrarModal.emit(false);
-    }).catch(error=>{
-      this.toas.error("Se produjo un error al Guardar tu encuesta","Error");
-    })
+  { 
+    if(!this.cancelar && !this.rechazar)
+    {
+        if(this.user.rol == "paciente")
+        {
+          this.auth.updateOpinion(this.turno,this.user,this.turno.opinionPaciente,this.turno.calificacionPaciente).then(res=>{
+            this.toas.success("Encuesta Guardada con éxito");
+            this.auth.updateEstadoTurno(this.turno,5);
+            this.eventoMostrarModal.emit(false);
+            this.eventoJustifacion.emit(false);
+          }).catch(error=>{
+            this.toas.error("Se produjo un error al Guardar tu encuesta","Error");
+          })
+        }
+        else
+        {
+          if(this.user.rol == "profesional")
+          {
+            this.auth.updateOpinion(this.turno,this.user,this.turno.opinionProfesional,this.turno.calificacionProfesional).then(res=>{
+              this.toas.success("Encuesta Guardada con éxito");
+              this.auth.updateEstadoTurno(this.turno,3);
+              this.eventoMostrarModal.emit(false);
+              this.eventoJustifacion.emit(false);
+
+            }).catch(error=>{
+              this.toas.error("Se produjo un error al Guardar tu encuesta","Error");
+            })
+          }
+        }
+
+    }
+    else
+    {
+      if(this.cancelar)
+      {  
+       
+          this.auth.upadteJustificacion(this.turno,this.turno.comentario).then(res =>{
+            this.toas.success("Justificación Guardada con éxito");
+            this.auth.updateEstadoTurno(this.turno,4);
+            this.eventoMostrarModal.emit(false);
+
+          })
+      }
+      else
+      {
+         this.auth.upadteJustificacion(this.turno,this.turno.comentario).then(res =>{
+          this.toas.success("Justificación Guardada con éxito");
+          this.auth.updateEstadoTurno(this.turno,2);
+          this.eventoMostrarModal.emit(false);
+
+        })
+      }
+    }
   }
   
   cargarDatos()

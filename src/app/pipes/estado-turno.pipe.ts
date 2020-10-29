@@ -27,19 +27,27 @@ export class EstadoTurnoPipe implements PipeTransform {
           }
           else
           {
-            if(value == 3)
+            if(value == 2)
             {
               retorno = "Rechazado";
             }
             else
             {
-              if(value == 4)
+              if(value == 3)
               {
                 retorno = "En Atención";
               }
               else
-              {
-                retorno = "Finalizado";
+              { 
+                if(value == 4)
+                {
+                   retorno = "Cancelado por Profesional"; 
+                }
+                else
+                {
+                  retorno = "Finalizado";
+
+                }
               }
             }
           }

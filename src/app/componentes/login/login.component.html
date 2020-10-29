@@ -28,11 +28,16 @@
         <input style="color: black;" matInput type="password" [(ngModel)]="clave" name="psw">
       </mat-form-field>
    
+      <div class="recaptcha">
+        <re-captcha (resolved)="resolved($event)" siteKey="6Lfc9twZAAAAAAjwYSzByar-hPR8o8rzi9mXE_FI"></re-captcha>
+      </div>
       <!-- <div class="recaptcha">
-        <re-captcha (resolved)="resolved($event)" siteKey="6LdHjqMZAAAAAMkK2810kzuViD35R3xooQGRi-P4"></re-captcha>
+        <ngx-recaptcha2 #captchaElem [siteKey]="siteKey">
+        </ngx-recaptcha2>
       </div> -->
+
       <br>
-      <button style="margin-top: 2rem;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Ingresar</button>
+      <button [disabled]="!recaptcha" style="margin-top: 2rem;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Ingresar</button>
     
     </form>
   

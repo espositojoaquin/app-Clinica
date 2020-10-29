@@ -20,6 +20,10 @@ import { MaterialComponent } from './componentes/material/material.component';
 //Alertas
 import { ToastrModule } from 'ngx-toastr';
 
+//captchat
+import { NgxCaptchaModule } from 'ngx-captcha';
+import { RecaptchaModule } from 'ng-recaptcha';
+
 //Componentes 
 import { LoginComponent } from './componentes/login/login.component';
 import { RegistroComponent } from './componentes/registro/registro.component';
@@ -67,8 +71,9 @@ import { ModalTurnoComponent } from './componentes/modal-turno/modal-turno.compo
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireAuthModule,
     AngularFirestoreModule,
-    AngularFireStorageModule
-
+    AngularFireStorageModule,
+    NgxCaptchaModule,
+    RecaptchaModule
   ],
   providers: [
    {provide: MAT_DATE_LOCALE, useValue: 'fr-FR'},

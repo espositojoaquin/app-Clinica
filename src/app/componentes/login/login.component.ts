@@ -12,9 +12,13 @@ export class LoginComponent implements OnInit {
   claveClass:'';
   email:string;
   clave:string;
+  recaptcha: any;
+  siteKey:string;
 
 
-  constructor(private auth:AuthService) { }
+  constructor(private auth:AuthService) { 
+   // this.siteKey = '6Lfc9twZAAAAAAjwYSzByar-hPR8o8rzi9mXE_FI';
+  }
 
   usuarios: Array<any> = [
     { id: 0, nombre: "admin", correo: "admin@admin.com", clave: "1234567" },
@@ -41,6 +45,11 @@ export class LoginComponent implements OnInit {
       console.log("anda");
     })
      
+  }
+
+  resolved(captchaResponse: any) {
+    this.recaptcha = captchaResponse;
+    console.log("captcha: " + this.recaptcha);
   }
  
 

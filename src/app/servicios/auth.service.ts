@@ -345,14 +345,39 @@ export class AuthService {
 
               }
 
-              updateOpinion(turno:Turnos,valor:string,valor2:number)
-              {
-                return  this.db.collection('turnos').doc(turno.id.toString()).update({
-                  opinionPaciente:valor,
-                  calificacionPaciente:valor2
-                 
-                 }) 
-              }
+              updateOpinion(turno:Turnos,user:Usuario,valor:string,valor2:number)
+              { 
+
+                  if(user.rol == "paciente")
+                  {
+                    return  this.db.collection('turnos').doc(turno.id.toString()).update({
+    
+                      opinionPaciente:valor,
+                      calificacionPaciente:valor2
+                      
+                      }) 
+                  }
+                  else
+                  {
+                    return  this.db.collection('turnos').doc(turno.id.toString()).update({
+    
+                      opinionProfesional:valor,
+                      calificacionProfesional:valor2
+                      
+                      }) 
+                  }
+
+               }
+
+               upadteJustificacion(turno:Turnos,valor:string)
+               {
+                  return  this.db.collection('turnos').doc(turno.id.toString()).update({
+      
+                      comentario:valor,
+                    
+                    
+                    }) 
+               }
 
 
               // async registerPB(usuario:Usuario)

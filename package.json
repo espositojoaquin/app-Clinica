@@ -31,6 +31,8 @@
     "firebase": "^7.13.1",
     "firebase-admin": "^9.3.0",
     "jquery": "^3.5.1",
+    "ng-recaptcha": "^6.0.2",
+    "ngx-captcha": "^8.0.1",
     "ngx-toastr": "^13.1.0",
     "node-forge": "^0.10.0",
     "path": "^0.12.7",

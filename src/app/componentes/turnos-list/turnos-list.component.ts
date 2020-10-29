@@ -20,10 +20,11 @@ export class TurnosListComponent implements OnInit {
   dia:string;
   turnoSeleccionado:Turnos;
   mostrarModal:boolean;
+  cancelarPro:boolean;
+  rechazarPro:boolean;
   constructor( private data:DataService,private auth:AuthService,private toast:ToastrService) { }
 
   ngOnInit(): void {
-
 
     var uid="0";
      this.auth.getUserUid().then(res =>{
@@ -78,15 +79,34 @@ export class TurnosListComponent implements OnInit {
   tomarTurno(turno:Turnos)
   {
      this.turnoSeleccionado = turno;
+    
   }
 
   cancelar(turno:Turnos)
+  {   
+     if(this.usuario.rol == "paciente")
+     {
+       this.auth.updateEstadoTurno(turno,-1).then(res=>{
+         this.toast.success("Turno Cancelado con éxito");
+       }).catch(error=>{
+         this.toast.error("Hemos tenido un problema la cancelar el turno","Error");
+       })
+
+     }
+     else
+     {
+       
+       if(this.usuario.rol = "profesional")
+       { 
+         this.cancelarPro = true;
+         this.mostrarEncuesta(true);
+       }
+     }
+  }
+  rechazar(turno:Turnos)
   {
-      this.auth.updateEstadoTurno(turno,-1).then(res=>{
-        this.toast.success("Turno Cancelado con éxito");
-      }).catch(error=>{
-        this.toast.error("Hemos tenido un problema la cancelar el turno","Error");
-      })
+        this.rechazarPro = true;
+         this.mostrarEncuesta(true);
   }
   aceptar(turno:Turnos)
   {
@@ -95,6 +115,12 @@ export class TurnosListComponent implements OnInit {
     }).catch(error=>{
       this.toast.error("Hemos tenido un problema la cancelar el turno","Error");
     })
+  }
+
+  justificacion(value:boolean)
+  {
+    this.rechazarPro = value;
+    this.cancelarPro = value;
   }
 
 }

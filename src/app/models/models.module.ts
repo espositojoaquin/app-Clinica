@@ -63,6 +63,8 @@ export class Turnos{
  especialidad:string;
  calificacionPaciente:number;
  opinionPaciente:string;
+ opinionProfesional:string;
+ calificacionProfesional:number;
 
  constructor(){
    //this.profesional.tipo = "profesional";
