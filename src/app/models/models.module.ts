@@ -68,7 +68,7 @@ export class Turnos{
 
  constructor(){
    //this.profesional.tipo = "profesional";
-    this.estado=1;
+    this.estado=0;
     this.comentario = "-";
    // this.fecha = new Date();
     
