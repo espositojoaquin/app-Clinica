@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Turnos, Usuario } from 'src/app/models/models.module';
+import { Dinamicos, Turnos, Usuario } from 'src/app/models/models.module';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { DataService } from 'src/app/servicios/data.service';
 
@@ -13,11 +13,12 @@ export class TurnosListComponent implements OnInit {
    
   listado:Array<Turnos> = new Array<Turnos> ();
   usuario:any = new Usuario();
-  filtro = ['Profesional','Especialidad','Dia'];
+  filtro = ['Profesional','Especialidad','Dia','SinFiltro'];
   dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   fitroSeleccionado:string;
   escribir:string;
   dia:string;
+  listaDinamicos:Array<Dinamicos>;
   turnoSeleccionado:Turnos;
   mostrarModal:boolean;
   cancelarPro:boolean;
@@ -82,6 +83,7 @@ export class TurnosListComponent implements OnInit {
     
   }
 
+
   cancelar(turno:Turnos)
   {   
      if(this.usuario.rol == "paciente")
@@ -109,12 +111,13 @@ export class TurnosListComponent implements OnInit {
          this.mostrarEncuesta(true);
   }
   aceptar(turno:Turnos)
-  {
+  {  
     this.auth.updateEstadoTurno(turno,1).then(res=>{
       this.toast.success("Turno Aceptado con éxito");
     }).catch(error=>{
       this.toast.error("Hemos tenido un problema la cancelar el turno","Error");
     })
+    this.turnoSeleccionado = undefined;
   }
 
   justificacion(value:boolean)

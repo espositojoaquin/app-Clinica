@@ -11,6 +11,10 @@ export class FiltroPipe implements PipeTransform {
          
     console.log(arg);
     console.log(arg2);
+    if(arg2== undefined)
+    {
+      arg2 = "";
+    }
     console.info(value);
          const result = [];
         value.forEach(item =>{
@@ -77,6 +81,12 @@ export class FiltroPipe implements PipeTransform {
                         break;
                     }
                   }
+                  else
+                  {
+                   
+                        result.push(item);
+                    
+                  }
                 }
                 
               }
@@ -85,15 +95,11 @@ export class FiltroPipe implements PipeTransform {
         })
      
    
-   if(result.length >0 )
-   {
+  
      return result;
 
-   }
-   else
-   {
-     return value;
-   }
+   
+  
   }
 
 }

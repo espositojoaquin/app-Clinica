@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
-import { Turnos, Usuario } from 'src/app/models/models.module';
+import { Dinamicos, Turnos, Usuario } from 'src/app/models/models.module';
 import { AuthService } from 'src/app/servicios/auth.service';
 
 @Component({
@@ -13,12 +13,19 @@ export class ModalTurnoComponent implements OnInit {
   opinion:string;
   calificaciones = [1,2,3,4,5];
   calif:number;
+  edad:number;
+  temperatura:number;
+  presion:number;
+  //listaDinamicos:Array<Dinamicos> = new  Array<Dinamicos>();
+  listaDinamicos = [];
+
+
+
   @Input() turno:Turnos;
   @Input() user:Usuario;
   @Input() mostrar:boolean;
   @Input() cancelar:boolean;
   @Input() rechazar:boolean;
-
 
   @Output() eventoMostrarModal = new EventEmitter<boolean>();
   @Output() eventoJustifacion = new EventEmitter<boolean>();
@@ -55,8 +62,9 @@ export class ModalTurnoComponent implements OnInit {
         else
         {
           if(this.user.rol == "profesional")
-          {
-            this.auth.updateOpinion(this.turno,this.user,this.turno.opinionProfesional,this.turno.calificacionProfesional).then(res=>{
+          { 
+           // console.info(this.listaDinamicos);
+            this.auth.updateOpinion(this.turno,this.user,this.turno.opinionProfesional,this.turno.calificacionProfesional,this.edad,this.temperatura,this.presion,this.listaDinamicos).then(res=>{
               this.toas.success("Encuesta Guardada con éxito");
               this.auth.updateEstadoTurno(this.turno,3);
               this.eventoMostrarModal.emit(false);
@@ -103,6 +111,11 @@ export class ModalTurnoComponent implements OnInit {
     }
 
   }
+  onAgregarDatos(){
+    this.listaDinamicos.push({propiedad:"",valor:""});    
+    
+  }
+
 
 
 }

@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
   }
 
   solicitarTurno(){
-    this.route.navigate(['/solicitarTurno']); 
+    this.route.navigate(['/sacarTurno']); 
   }
   altaAdmin(){
     this.route.navigate(['/altaAdmin']); 

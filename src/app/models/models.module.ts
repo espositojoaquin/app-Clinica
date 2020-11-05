@@ -9,7 +9,15 @@ import { StringifyOptions } from 'querystring';
 })
 export class ModelsModule { }
 
+export class Dinamicos{
+ propiedad:string;
+ valor:string;
 
+ constructor(prop:string,value:string){
+   this.propiedad = prop;
+   this.valor = value;
+ }
+}
 export class Usuario{
 
   id:string;
@@ -39,13 +47,13 @@ export class Profesional{
 
   constructor(){
     this.tipo = "profesional";
-    this.nombre = "a";
-    this.apellido = "a";
-    this.uid = "a";
-    this.dni = "a";
-    this.email = "a";
+    this.nombre = "";
+    this.apellido = "";
+    this.uid = "";
+    this.dni = "";
+    this.email = "";
     this.especialidades = [];
-    this.estado = "pendiente";
+    this.estado = "0";
     this.atencion = [];
   }
 
@@ -56,7 +64,7 @@ export class Turnos{
  id:number;
  paciente:Usuario;
  profesional:Profesional = new Profesional();
- fecha:Date;
+ fecha:Date; 
  hora:Time;
  estado:number;
  comentario:string;
@@ -70,6 +78,7 @@ export class Turnos{
    //this.profesional.tipo = "profesional";
     this.estado=0;
     this.comentario = "-";
+
    // this.fecha = new Date();
     
 

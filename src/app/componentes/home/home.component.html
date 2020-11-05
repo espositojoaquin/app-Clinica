@@ -20,6 +20,9 @@
                         <a class="dropdown-item" routerLink="/listadoTurnos">Listado Turnos</a>
                         <a *ngIf="usuario.rol == 'admin'" class="dropdown-item" routerLink="/altaAdmin">Alta Admin</a>
                         <a *ngIf="usuario.rol == 'profesional'"  class="dropdown-item" routerLink="/horarios">Horarios</a>
+                        <a *ngIf="usuario.rol == 'paciente'"  class="dropdown-item" routerLink="/sacarTurno">Sacar turno</a>
+                        
+                
                         <!-- <a class="dropdown-item" routerLink="/ActorPelicula">Actor-Pelicula</a> -->
     
                     </div>

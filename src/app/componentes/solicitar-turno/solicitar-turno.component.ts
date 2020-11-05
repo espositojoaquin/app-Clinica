@@ -122,8 +122,7 @@ export class SolicitarTurnoComponent implements OnInit {
 
   cargarHora()
   {
-    /* this.horas = this.turno.profesional.atencion.map(function(x){return x.hora});
-    console.info(this.horas);*/
+    
     this.horas = [];
     
     let date = new Date(this.turno.fecha);

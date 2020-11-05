@@ -39,6 +39,10 @@ import { EstadoTurnoPipe } from './pipes/estado-turno.pipe';
 import { TurnoDetalleComponent } from './componentes/turno-detalle/turno-detalle.component';
 import { FiltroPipe } from './pipes/filtro.pipe';
 import { ModalTurnoComponent } from './componentes/modal-turno/modal-turno.component';
+import { SacarTurnoComponent } from './componentes/sacar-turno/sacar-turno.component';
+import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
+import { ListaEspecialidadesComponent } from './componentes/lista-especialidades/lista-especialidades.component';
+import { ListaProfesionalesComponent } from './componentes/lista-profesionales/lista-profesionales.component';
 
 
 
@@ -57,7 +61,11 @@ import { ModalTurnoComponent } from './componentes/modal-turno/modal-turno.compo
     EstadoTurnoPipe,
     TurnoDetalleComponent,
     FiltroPipe,
-    ModalTurnoComponent
+    ModalTurnoComponent,
+    SacarTurnoComponent,
+    CabeceraComponent,
+    ListaEspecialidadesComponent,
+    ListaProfesionalesComponent
   ],
   imports: [
     BrowserModule,

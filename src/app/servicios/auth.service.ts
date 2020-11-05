@@ -16,7 +16,7 @@ import * as admin from 'firebase-admin';
 // Add the Firebase products that you want to use
 import "firebase/auth";
 import "firebase/firestore";
-import { Profesional, Turnos, Usuario } from '../models/models.module';
+import { Dinamicos, Profesional, Turnos, Usuario } from '../models/models.module';
 import { promise } from 'protractor';
 import { rejects } from 'assert';
 import { ToastrService } from 'ngx-toastr';
@@ -269,7 +269,7 @@ export class AuthService {
                        
                        paciente:turno.paciente,
                        profesional:turno.profesional,
-                       fecha:turno.fecha,
+                       fecha: turno.fecha.getFullYear() + "-" + (turno.fecha.getMonth()+1) + "-" + turno.fecha.getDate(),
                        id:ida,
                        hora:turno.hora,
                        estado:turno.estado,
@@ -359,7 +359,7 @@ export class AuthService {
 
               }
 
-              updateOpinion(turno:Turnos,user:Usuario,valor:string,valor2:number)
+              updateOpinion(turno:Turnos,user:Usuario,valor:string,valor2:number,edad ?:number,temperatura?:number,presion?:number,datosAdicional?:Array<any>)
               { 
 
                   if(user.rol == "paciente")
@@ -372,11 +372,16 @@ export class AuthService {
                       }) 
                   }
                   else
-                  {
+                  { 
+                    console.info(datosAdicional);
                     return  this.db.collection('turnos').doc(turno.id.toString()).update({
     
                       opinionProfesional:valor,
-                      calificacionProfesional:valor2
+                      calificacionProfesional:valor2,
+                      edad:edad,
+                      temperatura:temperatura,
+                      presion:presion,
+                      datosAdicionales:datosAdicional
                       
                       }) 
                   }
