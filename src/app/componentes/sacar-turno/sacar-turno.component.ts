@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { element } from 'protractor';
 import { Turnos, Usuario } from 'src/app/models/models.module';
 import { AuthService } from 'src/app/servicios/auth.service';
 import { DataService } from 'src/app/servicios/data.service';
@@ -22,12 +23,14 @@ export class SacarTurnoComponent implements OnInit {
   horas:Array<any> = [];
   usuario:any = new Usuario();
   hora:any;
+  turnos:any = new Array<Turnos>();
+  turnosDisponibles:Array<any> = new Array<any>();
    
 
   constructor(private _formBuilder: FormBuilder,private data:DataService,private toastr:ToastrService,private auth:AuthService) {}
 
   ngOnInit() {
-
+    this.turnos =this.data.getTurnos();
     var uid="0";
     this.auth.getUserUid().then(res =>{
       uid = res.toString();
@@ -71,9 +74,6 @@ export class SacarTurnoComponent implements OnInit {
   Entrar(){  
     
     this.turno.paciente = this.usuario;
-  
-     console.log(this.turno.fecha);
-     console.info(this.turno);
 
       this.auth.registerTurnos(this.turno).then(res=>{
         console.log("Guarda bien el turno");
@@ -99,14 +99,28 @@ export class SacarTurnoComponent implements OnInit {
   tomarProfesional(dato:any)
   {
     this.turno.profesional = dato;
+    this.turnosDisponibles = [];
+    this.Fechas();
+    
     
   }
   parserFecha(fecha:Date)
   {
-    let dia = fecha.getDate;
-    let mes = fecha.getMonth;
-    let anio = fecha.getFullYear;
-    let feche = dia + "-" + mes + "-" + anio;
+    let dia = fecha.getDate();
+    let mes = fecha.getMonth()+1;
+    let anio = fecha.getFullYear() ;
+  //  let feche = dia + "-" + mes + "-" + anio;
+  let feche;
+  if(dia>9)
+  {
+     feche = anio + "-" + mes + "-" + dia;
+
+  }
+  else
+  {
+     feche = anio + "-" + mes + "-" + "0"+dia;
+
+  }
     
     return feche;
    
@@ -161,6 +175,87 @@ export class SacarTurnoComponent implements OnInit {
     } 
 
     return dia;
+
+  }  
+
+  tomarFechaHora(evento:any)
+  { 
+    this.turno.fecha = evento.fecha;
+    this.turno.hora = evento.hora;
+    console.log(this.turno.fecha);
+  }
+
+  ExisteTurno(fecha:string,hora:any,num:number,dia:string,mes:number)
+  { 
+     let turnosDisponibles = [];
+     this.data.TurnoFecha(fecha,hora).then(res =>{
+        turnosDisponibles = res;
+        if(turnosDisponibles.length == 0)
+        { 
+          this.turnosDisponibles.push({fecha:fecha,hora:hora,numero:num,nombre:dia,mes:mes+1});
+    
+        }
+          console.info(this.turnosDisponibles);   
+      })
+     
+  }
+
+  Fechas()
+  {
+    
+    let day = new Date();
+    let turnosDisponibles = [];
+    //let horas = [];
+
+    this.turno.profesional.atencion.forEach(element => {
+       
+    let dia = this.transformFech(element.dia);
+    let dif = day.getDay() - dia;
+    
+    let fecha:Date = new Date();
+    
+    if(dif > 0)
+    { 
+      fecha.setDate(fecha.getDate() - dif);
+
+      
+    }
+    else
+    {  
+      if(dif<0)
+      {
+        
+        fecha.setDate(fecha.getDate() - dif);
+        
+      }
+      else
+      {
+        
+      }
+      
+    }
+    if(dif <1)
+    {
+      let fe  = this.parserFecha(fecha);
+      this.ExisteTurno(fe,element.hora,fecha.getDate(),element.dia,fecha.getMonth());
+
+    }
+    let semana:Date = new Date();
+     
+   for (let i = 1; i < 4; i++) {
+     semana.setDate(fecha.getDate()+7*i);
+     let sem = this.parserFecha(semana)
+     this.ExisteTurno(sem,element.hora,semana.getDate(),element.dia,semana.getMonth());
+     
+   }
+    
+        // turnosDisponibles.push({fecha:fecha,hora:element.hora});
+    
+   // console.info(turnosDisponibles);
+
+    });
+
+    
 
   }
 

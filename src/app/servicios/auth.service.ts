@@ -269,7 +269,8 @@ export class AuthService {
                        
                        paciente:turno.paciente,
                        profesional:turno.profesional,
-                       fecha: turno.fecha.getFullYear() + "-" + (turno.fecha.getMonth()+1) + "-" + turno.fecha.getDate(),
+                       //fecha: turno.fecha.getFullYear() + "-" + (turno.fecha.getMonth()+1) + "-" + turno.fecha.getDate(),
+                       fecha:turno.fecha,
                        id:ida,
                        hora:turno.hora,
                        estado:turno.estado,

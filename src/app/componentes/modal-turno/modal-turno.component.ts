@@ -26,7 +26,6 @@ export class ModalTurnoComponent implements OnInit {
   @Input() mostrar:boolean;
   @Input() cancelar:boolean;
   @Input() rechazar:boolean;
-
   @Output() eventoMostrarModal = new EventEmitter<boolean>();
   @Output() eventoJustifacion = new EventEmitter<boolean>();
 

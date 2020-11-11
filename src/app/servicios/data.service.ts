@@ -62,6 +62,19 @@ export class DataService {
     return profesionales;
 
   }
+  async TurnoFecha(fecha:string,hora:any)
+  {
+       let turnos = [];
+      let turnosUfs =  await this.dbTurnosRef.ref.where("fecha", "==", fecha).where("hora","==",hora).get();
+        
+      turnosUfs.docs.map(function(x){
+        turnos.push(x.data());
+    }); 
+
+   
+    return turnos;
+
+  }
 
 
 

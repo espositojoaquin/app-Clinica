@@ -43,6 +43,8 @@ import { SacarTurnoComponent } from './componentes/sacar-turno/sacar-turno.compo
 import { CabeceraComponent } from './componentes/cabecera/cabecera.component';
 import { ListaEspecialidadesComponent } from './componentes/lista-especialidades/lista-especialidades.component';
 import { ListaProfesionalesComponent } from './componentes/lista-profesionales/lista-profesionales.component';
+import { ListaFechaHoraComponent } from './componentes/lista-fecha-hora/lista-fecha-hora.component';
+import { ModalTurnoDetalleComponent } from './componentes/modal-turno-detalle/modal-turno-detalle.component';
 
 
 
@@ -65,7 +67,9 @@ import { ListaProfesionalesComponent } from './componentes/lista-profesionales/l
     SacarTurnoComponent,
     CabeceraComponent,
     ListaEspecialidadesComponent,
-    ListaProfesionalesComponent
+    ListaProfesionalesComponent,
+    ListaFechaHoraComponent,
+    ModalTurnoDetalleComponent
   ],
   imports: [
     BrowserModule,

@@ -1,84 +1,82 @@
 <app-cabecera [nombre]="'Solicitar Turno'"></app-cabecera>
 
 <mat-horizontal-stepper [linear]="true" #stepper>
-    <mat-step [stepControl]="firstFormGroup">
-      <form [formGroup]="firstFormGroup">
+    <mat-step >
         <ng-template matStepLabel>Seleccione Especialidad</ng-template>
         <app-lista-especialidades (enventoEspecialidad)="tomarEspecialidad($event)"></app-lista-especialidades>
            
         <mat-form-field>
-              <mat-label>Especialidad</mat-label>
-              <input [disabled]="true" [(ngModel)]="turno.especialidad" matInput placeholder="especialidad" formControlName="firstCtrl" required>
+              <mat-label style="color: #c2185b;">Especialidad</mat-label>
+              <input [disabled]="true" [(ngModel)]="turno.especialidad" matInput placeholder="especialidad">
         </mat-form-field>
 
         <div>
-          <button (click)="cargarProfesionales(turno.especialidad)" mat-button matStepperNext>Next</button>
+          <button [disabled]="!turno.especialidad" (click)="cargarProfesionales(turno.especialidad)" mat-button matStepperNext>Next</button>
         </div>
-      </form>
+     
     </mat-step>
-    <mat-step [stepControl]="secondFormGroup" label="Selecciona un profesional">
-      <form [formGroup]="secondFormGroup">
+    <mat-step  >
+      <ng-template matStepLabel [disabled]="!turno.especialidad">Selecciona un profesional</ng-template>
+     
         <app-lista-profesionales *ngIf="turno.especialidad" [especialidad]="turno.especialidad" [listado]="profesionales" (enventoProfesional)="tomarProfesional($event)"></app-lista-profesionales>
         
 
         <mat-form-field>
-          <mat-label>Profesional</mat-label>
-          <input  [(ngModel)]="turno.profesional.nombre" matInput type="text" formControlName="secondCtrl" placeholder="profesional"
-                 required >
+          <mat-label style="color: #c2185b;">Profesional</mat-label>
+          <input [disabled]="true"   [(ngModel)]="turno.profesional.nombre" matInput type="text"  placeholder="profesional"
+                  >
                 
         </mat-form-field>
         <div>
           <button mat-button matStepperPrevious>Back</button>
-          <button mat-button matStepperNext>Next</button>
+          <button [disabled]="!turno.profesional.nombre" mat-button matStepperNext>Next</button>
         </div>
-      </form>
+      
     </mat-step>
-    <mat-step [stepControl]="horaFormGroup" label="Selecciona Fecha y Hora">
-      <form [formGroup]="horaFormGroup">
-        <!-- <app-lista-profesionales *ngIf="turno.especialidad" [especialidad]="turno.especialidad" [listado]="profesionales" (enventoProfesional)="tomarProfesional($event)"></app-lista-profesionales> -->
-       <div class="fecha">
-         <mat-form-field style="width: 20%;" class="example-full-width" appearance="fill">
-           <mat-label>Seleccione un Día</mat-label>
-           <input [(ngModel)]="turno.fecha" (click)="cargarHora()" matInput [matDatepickerFilter]="myFilter" [min]="today" [matDatepicker]="picker" formControlName="fechaCtrl" placeholder="Seleccione una fecha" disabled >
-           <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-           <mat-datepicker  #picker disabled="false"></mat-datepicker>
-         </mat-form-field>
-
+    <mat-step>
+      <ng-template matStepLabel>Selecciona Fecha y Hora</ng-template>
+    <app-lista-fecha-hora [profesional]="turno.profesional.apellido" [listado]="turnosDisponibles" (enventoFecha)="tomarFechaHora($event)" ></app-lista-fecha-hora>
+    <mat-form-field>
+      <mat-label style="color: #c2185b;">Fecha</mat-label>
+      <input [disabled]="true" [(ngModel)]="turno.fecha" matInput type="text"  placeholder="Fecha"
+             required >
+            
+    </mat-form-field>
+    <br>
+    <mat-form-field>
+      <mat-label style="color: #c2185b;">Hora</mat-label>
+      <input [disabled]="true" [(ngModel)]="turno.hora" matInput type="text"  placeholder="hora"
+             required >
+            
+    </mat-form-field>
     
- 
-         <mat-form-field style="width: 20%; " class="full-width-input">
-          <mat-label style="color: #c2185b;">Seleccione una Hora</mat-label>
-          <mat-select  [(ngModel)]="turno.hora" (click)="cargarHora()" name="horas" formControlName="horaCtrl" > 
-              
-            <mat-option *ngFor="let item of horas"  [value]="item">{{item}}</mat-option>
-            
-            
-          </mat-select>
-       </mat-form-field>
-         <mat-form-field style="display: none;">
-           <mat-label>Fecha Y Hora</mat-label>
-           <!-- <p>{{turno.profesional.nombre}}</p> -->
-           <input   [disabled]="true"  matInput type="text"  placeholder="profesional"
-                  required>
-                  
-         </mat-form-field> 
+    <div>
+        <button mat-button matStepperPrevious>Back</button>
+        <button [disabled]="!turno.fecha" mat-button matStepperNext>Next</button>
+      </div>
+    </mat-step> 
+    <mat-step>
+      <ng-template matStepLabel>Verificación de Datos</ng-template>
+      
+      <div class="verif">
+          
+        <div class="cont">
+          <label style="color: #c2185b;" for=""><strong>Especialidad</strong> </label>
+          {{turno.especialidad}}
+          <label style="color: #c2185b;" for=""><strong>Profesional</strong> </label>
+          {{turno.profesional.nombre}} {{turno.profesional.apellido}}
+          <label style="color: #c2185b;" for=""><strong>Fecha</strong> </label>
+          {{this.turno.fecha}}
+          <label style="color: #c2185b;" for=""><strong>Hora</strong> </label>
+          {{this.turno.hora}} HS
 
-
-       </div>
-        <div>
-          <button mat-button matStepperPrevious>Back</button>
-          <!-- <button mat-button matStepperNext>Next</button> -->
-          <button style="margin-top: 2rem;" class="btn btn-block"   mat-raised-button color="primary"  (click)="Entrar()">Solicitar Turno</button>
+             <button style="background-color:  #c2185b; width: 80%; color: white;" mat-button (click)="Entrar()">Confirmar</button>
         </div>
-      </form>
-    </mat-step>
-    <!-- <mat-step>
-      <ng-template matStepLabel>Done</ng-template>
-      <p>You are now done.</p>
+      </div>
       <div>
         <button mat-button matStepperPrevious>Back</button>
         <button mat-button (click)="stepper.reset()">Reset</button>
       </div>
-    </mat-step> -->
+    </mat-step>
   </mat-horizontal-stepper>
 <!-- <app-lista-especialidades></app-lista-especialidades> -->
