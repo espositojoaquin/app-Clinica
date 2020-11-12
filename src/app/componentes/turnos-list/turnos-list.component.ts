@@ -21,6 +21,7 @@ export class TurnosListComponent implements OnInit {
   listaDinamicos:Array<Dinamicos>;
   turnoSeleccionado:Turnos;
   mostrarModal:boolean;
+  mostrarModalDetalle:boolean;
   cancelarPro:boolean;
   rechazarPro:boolean;
   constructor( private data:DataService,private auth:AuthService,private toast:ToastrService) { }
@@ -80,9 +81,14 @@ export class TurnosListComponent implements OnInit {
   tomarTurno(turno:Turnos)
   {
      this.turnoSeleccionado = turno;
+     this.mostrarModalDetalle = true;
     
   }
+  cerrarModalDetalle(dato:any)
+  { 
+    this.mostrarModalDetalle = dato;
 
+  }
 
   cancelar(turno:Turnos)
   {   
@@ -100,6 +106,7 @@ export class TurnosListComponent implements OnInit {
        
        if(this.usuario.rol = "profesional")
        { 
+         this.turnoSeleccionado = turno;
          this.cancelarPro = true;
          this.mostrarEncuesta(true);
        }

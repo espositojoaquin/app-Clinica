@@ -17,7 +17,7 @@ export class EstadoTurnoPipe implements PipeTransform {
       {
         if(value == -1)
         {
-          retorno = "Cancelado";
+          retorno = "Cancelado por Paciente";
         }
         else
         {

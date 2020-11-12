@@ -63,7 +63,7 @@
             <td>{{turno.estado|estadoTurno}}  </td>
             <!-- <td>{{turno.comentario}} </td> -->
             <td *ngIf="usuario.rol !='admin'">
-              <button *ngIf="usuario.rol == 'paciente' && turno.estado < 3" (click)="cancelar(turno)" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
+              <button *ngIf="usuario.rol == 'paciente' && turno.estado < 2" (click)="cancelar(turno)" class="btn btn-danger" style="margin-right: 1rem;">Cancelar</button>
               <button  (click)="tomarTurno(turno)" class="btn btn-primary" style="margin-right: 1rem;">info</button>
               <button *ngIf="usuario.rol == 'profesional' && turno.estado == 0" (click)="aceptar(turno)" class="btn btn-success" style="margin-right: 1rem;">Aceptar</button>
               <button *ngIf="usuario.rol == 'profesional'  && turno.estado == 0" class="btn btn-danger" (click)="rechazar(turno)" >Rechazar</button>
@@ -77,6 +77,6 @@
       </table>
       
     </div>
-    <app-turno-detalle [user]="usuario" [turno]="turnoSeleccionado"(eventoMostrarModal)="mostrarEncuesta($event)"></app-turno-detalle>
+    <!-- <app-turno-detalle [user]="usuario" [turno]="turnoSeleccionado"(eventoMostrarModal)="mostrarEncuesta($event)"></app-turno-detalle> -->
     <app-modal-turno [cancelar]="cancelarPro" [rechazar]="rechazarPro" [user]="usuario" [turno]="turnoSeleccionado"[mostrar]="mostrarModal" (eventoMostrarModal)="mostrarEncuesta($event)" (eventoJustifacion)="justificacion($event)"></app-modal-turno>
-   
+   <app-modal-turno-detalle [turno]="turnoSeleccionado" [user]="usuario" [mostrar]="mostrarModalDetalle"(eventoMostrarModal)="cerrarModalDetalle($event)"(eventoMostrarEncuesta)="mostrarEncuesta($event)"></app-modal-turno-detalle>

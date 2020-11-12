@@ -45,6 +45,7 @@ import { ListaEspecialidadesComponent } from './componentes/lista-especialidades
 import { ListaProfesionalesComponent } from './componentes/lista-profesionales/lista-profesionales.component';
 import { ListaFechaHoraComponent } from './componentes/lista-fecha-hora/lista-fecha-hora.component';
 import { ModalTurnoDetalleComponent } from './componentes/modal-turno-detalle/modal-turno-detalle.component';
+import { CalificacionPipe } from './pipes/calificacion.pipe';
 
 
 
@@ -69,7 +70,8 @@ import { ModalTurnoDetalleComponent } from './componentes/modal-turno-detalle/mo
     ListaEspecialidadesComponent,
     ListaProfesionalesComponent,
     ListaFechaHoraComponent,
-    ModalTurnoDetalleComponent
+    ModalTurnoDetalleComponent,
+    CalificacionPipe
   ],
   imports: [
     BrowserModule,
