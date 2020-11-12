@@ -18,7 +18,7 @@ table{
 .div1{
      margin-top: 5rem;
      overflow:auto;
-     height:25rem;
+     height:40rem;
      display: flex;
      flex-direction: row;
      justify-content: center;

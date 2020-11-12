@@ -7,17 +7,17 @@
           <mat-label style="color: #c2185b;">Califique el servicio de 1 a 5</mat-label>
           <mat-select  (change)="cargarDatos()" [(ngModel)]="turno.calificacionPaciente" [ngModelOptions]="{standalone: true}" > 
               
-            <mat-option *ngFor="let item of calificaciones"  [value]="item">{{item}}</mat-option>
+            <mat-option *ngFor="let item of calificaciones"  [value]="item"><strong style="color: orange;">{{item|calificacion}}</strong></mat-option>
             
             
           </mat-select>
           
        </mat-form-field>  
-       <mat-form-field *ngIf="user.rol == 'profesional'" style="width: 100%; " class="full-width-input">
+       <mat-form-field  *ngIf="user.rol == 'profesional'" style="width: 100%; " class="full-width-input">
         <mat-label style="color: #c2185b;"> Calificar al paciente de 1 a 5</mat-label>
-        <mat-select  [(ngModel)]="turno.calificacionProfesional" [ngModelOptions]="{standalone: true}" > 
+        <mat-select   [(ngModel)]="turno.calificacionProfesional" [ngModelOptions]="{standalone: true}" > 
             
-          <mat-option *ngFor="let item of calificaciones"  [value]="item">{{item}}</mat-option>
+          <mat-option *ngFor="let item of calificaciones"  [value]="item"><strong style="color: orange;">{{item|calificacion}}</strong></mat-option>
           
           
         </mat-select>

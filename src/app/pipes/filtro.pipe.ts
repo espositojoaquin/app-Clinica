@@ -7,13 +7,13 @@ import { Turnos } from '../models/models.module';
 })
 export class FiltroPipe implements PipeTransform {
 
-  transform(value: Turnos[], arg: string,arg2:string): unknown {
+  transform(value: any[], arg: string,arg2:string,arg3?:string ): unknown {
          
-    console.log(arg);
-    console.log(arg2);
+    
     if(arg2== undefined)
     {
       arg2 = "";
+      
     }
     console.info(value);
          const result = [];
@@ -83,8 +83,57 @@ export class FiltroPipe implements PipeTransform {
                   }
                   else
                   {
-                   
-                        result.push(item);
+                         if(arg == "Paciente")
+                         {
+                            if(item.paciente.apellido.toLowerCase().indexOf(arg2.toLowerCase()) > -1)
+                            {
+                              result.push(item);
+                            }
+                            
+                          }
+                          else
+                          {
+                            if(arg == "Temperatura")
+                            {
+                               if(item.temperatura != undefined)
+                               {
+                                 if(item.temperatura == arg2)
+                                 {
+                                   result.push(item);
+                                 }
+
+                               }
+                            }
+                            else
+                            { 
+                              if(arg == "Adicionales")
+                              {
+                                if(item.datosAdicionales != undefined)
+                                {
+                                  item.datosAdicionales.forEach(element => {
+                                      
+                                    if(element.propiedad == arg3)
+                                    {
+                                            if(element.valor.toLowerCase().indexOf(arg2.toLowerCase()) > -1)
+                                            {
+                                                result.push(item);
+
+                                            }
+                                    }
+                                  
+                                  });
+                                }
+                              }
+                              else
+                              {
+                                result.push(item);
+
+                              }
+
+                            }
+
+                          }
+                          
                     
                   }
                 }

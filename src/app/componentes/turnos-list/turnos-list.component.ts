@@ -13,10 +13,11 @@ export class TurnosListComponent implements OnInit {
    
   listado:Array<Turnos> = new Array<Turnos> ();
   usuario:any = new Usuario();
-  filtro = ['Profesional','Especialidad','Dia','SinFiltro'];
+  filtro = ['Profesional','Especialidad','Dia','Temperatura','Paciente','Adicionales','SinFiltro'];
   dias = ['Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   fitroSeleccionado:string;
   escribir:string;
+  adicional:string;
   dia:string;
   listaDinamicos:Array<Dinamicos>;
   turnoSeleccionado:Turnos;

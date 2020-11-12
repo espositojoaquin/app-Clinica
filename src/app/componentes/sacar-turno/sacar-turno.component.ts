@@ -195,9 +195,30 @@ export class SacarTurnoComponent implements OnInit {
           this.turnosDisponibles.push({fecha:fecha,hora:hora,numero:num,nombre:dia,mes:mes+1});
     
         }
-          console.info(this.turnosDisponibles);   
+          //console.info(this.turnosDisponibles);   
       })
+      
+
+    //this.turnosDisponibles =  
      
+  }
+
+  OrdenarLista()
+  {
+    for (let index = 0; index < this.turnosDisponibles.length; index++) {
+      
+      let element = this.turnosDisponibles[index].numero;
+      let siguiente = this.turnosDisponibles[index+1].numero;
+      let aux=0;
+  
+      if(element>siguiente)
+      {
+        aux = this.turnosDisponibles[index];
+        this.turnosDisponibles[index] =  this.turnosDisponibles[index+1];
+        this.turnosDisponibles[index+1] = this.turnosDisponibles[index];
+      }
+      
+    }
   }
 
   Fechas()
@@ -248,6 +269,8 @@ export class SacarTurnoComponent implements OnInit {
      this.ExisteTurno(sem,element.hora,semana.getDate(),element.dia,semana.getMonth());
      
    }
+  
+   
     
         // turnosDisponibles.push({fecha:fecha,hora:element.hora});
     

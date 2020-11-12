@@ -35,7 +35,7 @@
     </mat-step>
     <mat-step>
       <ng-template matStepLabel>Selecciona Fecha y Hora</ng-template>
-    <app-lista-fecha-hora [profesional]="turno.profesional.apellido" [listado]="turnosDisponibles" (enventoFecha)="tomarFechaHora($event)" ></app-lista-fecha-hora>
+    <app-lista-fecha-hora *ngIf="turnosDisponibles" [profesional]="turno.profesional.apellido" [listado]="turnosDisponibles" (enventoFecha)="tomarFechaHora($event)" ></app-lista-fecha-hora>
     <mat-form-field>
       <mat-label style="color: #c2185b;">Fecha</mat-label>
       <input [disabled]="true" [(ngModel)]="turno.fecha" matInput type="text"  placeholder="Fecha"
@@ -66,7 +66,7 @@
           <label style="color: #c2185b;" for=""><strong>Profesional</strong> </label>
           {{turno.profesional.nombre}} {{turno.profesional.apellido}}
           <label style="color: #c2185b;" for=""><strong>Fecha</strong> </label>
-          {{this.turno.fecha}}
+          {{this.turno.fecha |fecha}}
           <label style="color: #c2185b;" for=""><strong>Hora</strong> </label>
           {{this.turno.hora}} HS
 
