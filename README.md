@@ -29,8 +29,8 @@ _Ingresa a `http://localhost:4200/` para la prueba local._
 * [Material](https://material.angular.io/)
 * [Bootstrap](https://getbootstrap.com/docs/3.3/)
 * [Firebase](https://firebase.google.com/docs)
-* [Fontawesome]
-* [Typescript]
+* [Fontawesome](https://fontawesome.com/)
+* [Typescript](https://www.typescriptlang.org/)
 
 ---
 ## Requerimientos de la Aplicación
@@ -57,4 +57,22 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 ♦ Podemos registrarnos como Profesional, en donde además de los datos personales se debe cargar obligatoriamente 1 o mas especialidades.
 
  <img src="/src/assets/readme/registroProfesional.png" alt="">
+
+ ## Ingreso a la Web
+
+ ♦ Una vez verificado nuestro correo electrónico, podremos ingresar con nuestro email y contraseña.
+
+ <img src="/src/assets/readme/login.png" alt="">
+
+ ♦ Al ingresar como paciente se poddrá observar la siguiente pagina de Home. Donde se prodá acceder a la lista de los turnos solicitados por el paciente, y además el apartado para solicitar uno nuevo. 
+
+ <img src="/src/assets/readme/homePaciente.png" alt="">
+
+ <h2> <strong>Listado del lado del Paciente<strong> 
+  En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para cancelar el turno de necesitarlo, y otro para obtener mas información del mismo. 
+
+ <img src="/src/assets/readme/listaPaciente.png" alt="">
+
+
+
 
