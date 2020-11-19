@@ -15,6 +15,25 @@ table{
     box-shadow: -2px 7px 47px -10px rgba(0,0,0,0.75);
     
 }
+.buscador{
+    margin-top: 2rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+input{
+    width: 80%;
+}
+form{
+    width: 80%;
+    justify-content: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
 .div1{
      margin-top: 5rem;
      overflow:auto;

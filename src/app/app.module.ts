@@ -49,6 +49,7 @@ import { CalificacionPipe } from './pipes/calificacion.pipe';
 import { SortTurnosPipe } from './pipes/sort-turnos.pipe';
 import { MesesPipe } from './pipes/meses.pipe';
 import { FechaPipe } from './pipes/fecha.pipe';
+import { BusquedaPipe } from './pipes/busqueda.pipe';
 
 
 
@@ -77,7 +78,8 @@ import { FechaPipe } from './pipes/fecha.pipe';
     CalificacionPipe,
     SortTurnosPipe,
     MesesPipe,
-    FechaPipe
+    FechaPipe,
+    BusquedaPipe
   ],
   imports: [
     BrowserModule,

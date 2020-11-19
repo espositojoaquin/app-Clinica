@@ -91,6 +91,7 @@ export class TurnosListComponent implements OnInit {
 
   }
 
+
   cancelar(turno:Turnos)
   {   
      if(this.usuario.rol == "paciente")
