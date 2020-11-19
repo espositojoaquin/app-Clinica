@@ -1,5 +1,6 @@
-#TP AppClinica
+#<h1>CLÍNICA ONLINE</h1>
 Trabajo práctico - Laboratorio IV
+En esta aplicación se evalúan todos los mecanismos y conocimientos adquiridos en la cursada de la materia, utilizando código abierto y la documentación Web como bibliografía.
 _Este proyecto fue generado con Angular CLI version 10.1.6.
 
 ## Sitio de prueba 🚀
@@ -28,6 +29,8 @@ _Ingresa a `http://localhost:4200/` para la prueba local._
 * [Material](https://material.angular.io/)
 * [Bootstrap](https://getbootstrap.com/docs/3.3/)
 * [Firebase](https://firebase.google.com/docs)
+* [Fontawesome]
+* [Typescript]
 
 ---
 ⌨️ _UTN-FRA_ ⌨️
