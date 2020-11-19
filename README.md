@@ -118,5 +118,61 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
  <img src="/src/assets/readme/turnoDetalle.png" alt="">
 
 
+<h2> <strong>Primer Sprint - 22/11<strong> </h2>
+
+## Tareas principales realizadas
+
+♦ Registro y Login con Firebase
+
+♦ Verificación de email para usuarios 
+
+♦ Perfiles de usuarios con rutas autenticadas
+
+♦ Manejos de imágenes 
+
+♦ Proyecto subido a Heroku
+
+<h2> <strong>Segundo Sprint - 29/11<strong> </h2>
+
+♦ Se incorporó Captcha de Google para el registro de usuarios
+
+♦ Funcionalidad de usuarios Admmin para creación de nuevos administradores.
+
+♦ Listado de turnos de cada Paciente con su estado actual.
+
+♦ Alta de turnos.
+
+♦ Funcionalidad para que los profesionales agreguen su disponibilidad.
+
+c Atención de pacientes.
+
+<h2> <strong>Tercer Sprint - 5/11<strong> </h2>
+
+♦ Se agregaron animaciones
+
+♦ Funcion de Atencion de Usuarios.
+
+♦ Fucion de Solicitud de Turnos. 
+
+<h2> <strong>Cuarto Sprint - 12/11<strong> </h2>
+
+♦ Se agregaron animaciones
+
+♦ Corrección de Solicitud de turnos.
+
+♦ Encuesta por parte del apciente luego de ser atendido.
+
+♦ Filtro de turnos, segun los parámetros solicitados
+
+
+<h2> <strong>Quinto Sprint - 19/11<strong> </h2>
+
+♦ Corrección del filtro de turnos.
+♦ Elaboración del Readme.
+
+
+
+
+
 
 
