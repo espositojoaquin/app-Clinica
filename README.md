@@ -38,7 +38,6 @@ Debemos realizar un sistema según las necesidades y deseos del cliente, para es
 La clínica OnLine, especialista en salud, cuenta actualmente con consultorios (6 en la actualidad), dos laboratorios (físicos en la clínica), y una salade espera general. Está abierta al público de lunesa viernes en el horario de 8:00 a 19:00, y lossábados en el horario de 8:00 a 14:00.
 Trabajan en ella profesionales de diversas especialidades, que ocupan los consultorios acorde a su disponibilidad, y reciben en ellos pacientes con turno para consulta o tratamiento. Dichos turnos son pedidos por la web seleccionando el profesional o laespecialidad. La duración mínima de un turno es 30 minutos, pero los profesionales pueden cambiar la duración según su especialidad.
 
-Un profesional puede tener más de una especialidad
 
 ## Perfiles de usuarios
 
@@ -48,3 +47,13 @@ Un profesional puede tener más de una especialidad
 
 ♦ <strong> Administrador </strong> Se carga solamente por otro administrador)además de poder agregar una nueva especialidad en el alta de profesional.
 ⌨️ _UTN-FRA_ ⌨️
+
+## Registro al portal Web
+
+♦ Podemos registrarnos como Cliente, en donde además de los datos personales se debe cargar obligatoriamente 2 fotos.
+ <img src="../assets/readme/resgistroPaciente.png" alt="">
+
+ ♦ Podemos registrarnos como Profesional, en donde además de los datos personales se debe cargar obligatoriamente 1 o mas especialidades.
+
+ <img src="../assets/readme/registroProfesional.png" alt="">
+
