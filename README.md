@@ -68,8 +68,9 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
  <img src="/src/assets/readme/homePaciente.png" alt="">
 
- <h2> <strong>Listado del lado del Paciente<strong> 
-  En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para cancelar el turno de necesitarlo, y otro para obtener mas información del mismo. 
+ <h2> <strong>Listado del lado del Paciente<strong> </h2>
+  
+ En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para cancelar el turno de necesitarlo, y otro para obtener mas información del mismo. 
 
  <img src="/src/assets/readme/listaPaciente.png" alt="">
 
