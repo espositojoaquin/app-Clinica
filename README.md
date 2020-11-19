@@ -51,6 +51,7 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 ## Registro al portal Web
 
 ♦ Podemos registrarnos como Cliente, en donde además de los datos personales se debe cargar obligatoriamente 2 fotos.
+ 
  <img src="/src/assets/readme/resgistroPaciente.png" alt="">
 
 ♦ Podemos registrarnos como Profesional, en donde además de los datos personales se debe cargar obligatoriamente 1 o mas especialidades.
