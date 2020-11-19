@@ -75,5 +75,18 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
  <img src="/src/assets/readme/listaPaciente.png" alt="">
 
 
+ ♦ Una vez que seamos antendios vamos a poder completar una brebe encuesta de dicha atención 
+
+ <img src="/src/assets/readme/respuestaPaciente.png" alt="">
+
+  <h2> <strong>Sacar un Turno<strong> </h2>
+ 
+♦ Debemos sleccionar la especialidad a la cual queremos solicitar el turno, luego el profesional pertinente y por último el dia y hora disponible para nuestra solicitud.  
+
+ <img src="/src/assets/readme/turnoEspecialidad.png" alt="">
+ <img src="/src/assets/readme/turnoProfesional.png" alt="">
+ <img src="/src/assets/readme/turnoFecha.png" alt="">
+ <img src="/src/assets/readme/turnoVerif.png" alt="">
+
 
 
