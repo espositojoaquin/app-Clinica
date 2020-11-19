@@ -144,7 +144,7 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
 
 ♦ Funcionalidad para que los profesionales agreguen su disponibilidad.
 
-c Atención de pacientes.
+♦ Atención de pacientes.
 
 <h2> <strong>Tercer Sprint - 5/11<strong> </h2>
 
@@ -160,7 +160,7 @@ c Atención de pacientes.
 
 ♦ Corrección de Solicitud de turnos.
 
-♦ Encuesta por parte del apciente luego de ser atendido.
+♦ Encuesta por parte del paciente luego de ser atendido.
 
 ♦ Filtro de turnos, segun los parámetros solicitados
 
@@ -168,6 +168,7 @@ c Atención de pacientes.
 <h2> <strong>Quinto Sprint - 19/11<strong> </h2>
 
 ♦ Corrección del filtro de turnos.
+
 ♦ Elaboración del Readme.
 
 
