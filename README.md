@@ -88,5 +88,35 @@ Trabajan en ella profesionales de diversas especialidades, que ocupan los consul
  <img src="/src/assets/readme/turnoFecha.png" alt="">
  <img src="/src/assets/readme/turnoVerif.png" alt="">
 
+<h2> <strong>Home Profesional<strong> </h2>
+
+♦ Desde esta página de inicio podemos acceder a nuestra disponibilidad horaria, donde podremos indicar los dias y horarios de disponibilidad. Y además a la lista de turnos solicitados por los pacientes, donde podremos atenderlos.
+
+ <img src="/src/assets/readme/homeProfesional.png" alt="">
+
+ <h2> <strong>Listado del lado del Profesional<strong> </h2>
+
+ ♦ En este apartado nos encontramos con la barra de búsqueda para filtrar nuestros turnos, y ademas contamos con botones, para Aceptar o rechazasr el turno de ser necesitarlo, y otro para obtener mas información del mismo.
+
+ <img src="/src/assets/readme/listadoProfesional.png" alt="">
+
+♦ Al la hora de antender al paciente nos encontraremos con la siguiente encuenta/historia clínica a completar.
+
+ <img src="/src/assets/readme/encuestaProfesional.png" alt="">
+
+ <h2> <strong>Horarios de Profesional<strong> </h2>
+
+♦ En este apartado nos encontraremos el menu en el cual el Profesional puede agregar o eliminar días y horarios de atención.
+
+ <img src="/src/assets/readme/horaProfesional.png" alt="">
+
+
+<h2> <strong>Detalle del Turno<strong> </h2>
+
+♦ En el detalle del turno estan disponibles, tanto los datos del paciente como del profesional, además de la historia clínica y los datos de las encuestas.
+
+ <img src="/src/assets/readme/turnoDetalle.png" alt="">
+
+
 
 
